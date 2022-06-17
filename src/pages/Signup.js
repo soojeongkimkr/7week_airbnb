@@ -24,8 +24,9 @@ const Signup = (props) => {
             <Form>
               <Input type="text" required placeholder="ID" />
               <Input type="password" required placeholder="비밀번호" />
-              <Input type="submit" value="계속" />
+              <InputSubmit type="submit" value="계속" />
             </Form>
+            <button>회원 가입</button>
           </main>
           {/* <footer>
             <button className="close" onClick={close}>
@@ -45,6 +46,12 @@ const Form = styled.form`
 const Input = styled.input`
 display:block;
 margin:0 auto;
+`
+
+const InputSubmit = styled.input`
+display:block;
+margin:0 auto;
+cursor:pointer;
 `
 
 export default Signup;

@@ -57,6 +57,7 @@ font-size:14px;
 
 const SupportL = styled.div`
 color:#222;
+word-break:keep-all;
 `
 
 const SupportR = styled.div`
