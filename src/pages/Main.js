@@ -16,11 +16,11 @@ const Main = () => {
 
   return (
     <div>
-      <React.Fragment>
+      {/* <React.Fragment>
         <button onClick={openModal}>로그인</button>
         <Login open={modalOpen} close={closeModal} header="로그인 또는 회원 가입">
         </Login>
-      </React.Fragment>
+      </React.Fragment> */}
     </div>
   );
 };
