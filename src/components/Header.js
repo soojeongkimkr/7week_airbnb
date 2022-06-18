@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styled, {css} from "styled-components";
+import styled, {css, keyframes} from "styled-components";
 
 import airbnblogo from '../img/airbnblogo.png';
 
@@ -30,7 +30,7 @@ const Header = () => {
           <div className="menu_inner">
           <div className="menu">
             <div className="item">
-              <span className="item__name on"
+              <span className="item__name"
               onClick={()=>{setMode("hotel")}}
               >숙소</span>
               <span className="item__name"
@@ -145,21 +145,26 @@ const HeaderWrap = styled.div`
           color: #717171;
       }
       
-      /* .menu .item .item__name:nth-of-type(1)::after {
-          content: "";
-          width: 0;
-          height: 2px;
-          border-radius: 10px;
-          background-color: #222;
-          margin: auto;
-          display: block;
-          margin-top: 7px;
-          transition: width .1s;
-      } */
+      
+      .menu .item .item__name::after {
+        content: "";
+        width: 0;
+        height: 2px;
+        border-radius: 10px;
+        background-color: #ccc;
+        margin: auto;
+        display: block;
+        margin-top: 7px;
+        transition: width .1s;
+    }
 
-      .menu .item .item__name:hover::after {
-          width: 5px;
-      }
+    .menu .item .item__name:hover::after {
+        width: 25px;
+    }
+    .menu .item .item__name:nth-of-type(3):hover::after {
+        width: 60px;
+    }
+
 
 
       /* 메뉴 클릭시 on off */
@@ -383,6 +388,8 @@ const HeaderWrap = styled.div`
           `
         }}
       `;
+
+     
 
 
 

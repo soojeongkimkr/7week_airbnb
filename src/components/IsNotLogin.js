@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import styled, {css} from "styled-components";
 
@@ -8,6 +8,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const IsNotLogin = () => {
 
+  const [menuVisible, setmenuVisible] = useState(false);
+  
 
   return (
     <IsNotLoginWrap>
@@ -21,7 +23,9 @@ const IsNotLogin = () => {
             </div>
 
             <div className="signin" tabIndex="-1">
-              <div className="signin_item">
+              <div
+                onClick={()=>{setmenuVisible(!menuVisible)}}
+                className="signin_item">
                 <MenuOutlinedIcon
                 style={{
                   fontSize:'19px',
@@ -29,17 +33,19 @@ const IsNotLogin = () => {
                 }}/>
                 <AccountCircleIcon/>
               </div>
+              {menuVisible && 
               <div className="signinTxt">
                 <div>
                   <div
                   style={{fontWeight: '600'}}
-                  > 로그인 </div>
-                  <div> 회원가입 </div>
+                  > 회원가입 </div>
+                  <div> 로그인 </div>
                   <div> 숙소 호스팅하기 </div>
                   <div> 체험 호스팅하기 </div>
                   <div> 도움말 </div>
                 </div>
               </div>
+              }
             </div>
           </div>
         </nav>
@@ -72,7 +78,7 @@ const IsNotLoginWrap = styled.div`
 
       .header_right_wrap .header_right .header_right_host {
         display: flex;
-        margin-top: 7px;
+        margin-top: 8px;
         align-items:center;
       }
 
