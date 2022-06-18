@@ -1,5 +1,7 @@
 import React from "react";
 import Login from "../components/Login";
+import Category from "../components/Category";
+import Card from "../components/Card";
 
 import { useState } from 'react';
 
@@ -16,11 +18,15 @@ const Main = () => {
 
   return (
     <div>
-      <React.Fragment>
+      {/* <React.Fragment>
         <button onClick={openModal}>로그인</button>
         <Login open={modalOpen} close={closeModal} header="로그인 또는 회원 가입">
         </Login>
-      </React.Fragment>
+      </React.Fragment> */}
+      <Category />
+      <Card />
+
+      
     </div>
   );
 };
