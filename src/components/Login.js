@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from 'styled-components';
 
 import '../css/style.css';
-
+// import '../css/style.css';
 
 const Login = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
