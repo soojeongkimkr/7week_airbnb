@@ -1,5 +1,7 @@
 import React from "react";
 import './App.css';
+import theme from './css/theme';
+import styled, { css } from 'styled-components';
 
 import { Route, Routes } from 'react-router-dom';
 import Header from "./components/Header";
