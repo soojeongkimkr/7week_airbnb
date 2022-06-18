@@ -21,9 +21,6 @@ const Main = () => {
         <Login open={modalOpen} close={closeModal} header="로그인 또는 회원 가입">
         </Login>
       </React.Fragment>
-
-
-
     </div>
   );
 };
