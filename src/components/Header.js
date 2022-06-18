@@ -24,10 +24,7 @@ const Header = () => {
         <div className="inner">
           <div className="logo">
             <Link to ='/'>
-              <img src={airbnblogo} alt="airbnb logo"
-              style={{
-                width:'102px',
-              }}></img>
+              <img src={airbnblogo} alt="airbnb logo"></img>
             </Link>
           </div>
           <div className="menu_inner">
@@ -107,7 +104,7 @@ const HeaderWrap = styled.div`
         top: 0;
         bottom: 0;
         margin: auto;
-        width: 118px;
+        width: 120px;
       }
 
       /* 헤더 중앙 메뉴 */

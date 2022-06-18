@@ -2,6 +2,10 @@ import React from "react";
 
 import styled, {css} from "styled-components";
 
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 const IsLogin = () => {
 
 
@@ -12,14 +16,14 @@ const IsLogin = () => {
             <div className="header_right_host">
               <div className="host">호스트 모드로 전환</div>
               <div className="language">
-              {/* <FontAwesomeIcon icon="fa-light fa-globe" /> */}
+                <LanguageOutlinedIcon/>
               </div>
             </div>
 
             <div className="signin" tabIndex="-1">
               <div className="signin_item">
-                {/* <span className="material-icons">segment</span>
-                <span className="material-icons">account_circles</span> */}
+                <MenuOutlinedIcon/>
+                <AccountCircleIcon/>
               </div>
               <div className="signinTxt">
                 <div>
@@ -97,25 +101,22 @@ const IsLoginWrap = styled.div`
       }
 
       .header_right_wrap .header_right .header_right_host .language {
-          position: relative;
-          margin: -9px auto;
-          bottom: 0;
-          width: 40px;
-          height: 40px;
-          border-radius: 100px;
+          width:100px;
+          height:100px;
+          background:red;
       }
 
       .header_right_wrap .header_right .header_right_host .language:hover {
           background-color: rgba(255, 255, 255, 0.2);
       }
 
-      .header_right_wrap .header_right .header_right_host .language {
+      /* .header_right_wrap .header_right .header_right_host .language {
           position: absolute;
           color: #222;
           top: 10px;
           left: 10px;
           font-size: 20px;
-      }
+      } */
 
       .header_right_wrap .header_right .signin {
           background-color: #fff;
