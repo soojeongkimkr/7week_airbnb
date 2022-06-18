@@ -2,11 +2,10 @@ import React from "react";
 import '../css/style.css';
 
 const Card = ({ data }) => {
-    console.log(data);
-    // console.log(list);
+    // console.log(data);
     return (
         <div href="#" className="card">
-            <div>
+            <div className="cardImgBox">
                 <img src={data.mainImage} alt="" className="cardImg" />
             </div>
 

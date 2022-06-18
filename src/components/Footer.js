@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <FooterBox>
+    <FooterBox className="footerBox">
       <Support>
         <SupportL>© 2022 Airbnb, Inc. ·
           <A href="javascript:void(0);">개인정보 처리방침</A> ·

@@ -2,7 +2,10 @@ import React from "react";
 import Login from "../components/Login";
 import Category from "../components/Category";
 import Card from "../components/Card";
+
 import styled, { css } from 'styled-components';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
@@ -29,17 +32,27 @@ const Main = () => {
       </React.Fragment> */}
       <Category />
 
-      {post_list.map((list, idx) => {
-        return (
-          <Card key={idx} data={list}/>
-        )
-      })}
+      <div className="cardBox">
+        {post_list.map((list, idx) => {
+          return (
+            <Card key={idx} data={list} />
+          )
+        })}
+      </div>
     </Wrap>
   );
 };
 
 const Wrap = styled.div`
 padding:80px 40px 0;
+
+@media screen and (max-width: 1130px) {
+  padding:80px 10px 0;
+}
+
+@media screen and (max-width: 950px) {
+  padding:80px 0 0;
+}
 `
 
 export default Main;
