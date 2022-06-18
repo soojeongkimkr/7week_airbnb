@@ -18,7 +18,7 @@ function App() {
   return (
     <ThemeProvider theme = {theme}>
       <div className="App">
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/login" element={<Login />}></Route>

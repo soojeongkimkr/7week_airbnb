@@ -46,6 +46,7 @@ position:fixed;
 bottom:0;
 padding:12px 40px 12px;
 border-top:1px solid #EBEBEB;
+background-color:#fff;
 `
 
 const Support = styled.div`
