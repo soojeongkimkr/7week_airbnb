@@ -44,8 +44,11 @@ const Footer = () => {
 const FooterBox = styled.footer`
 position:fixed;
 bottom:0;
-padding:12px 40px 12px;
+right:0;
+width:100%;
+padding:12px 0px 12px;
 border-top:1px solid #EBEBEB;
+background: #fff;
 `
 
 const Support = styled.div`
@@ -53,11 +56,13 @@ display:flex;
 justify-content:space-between;
 text-align:left;
 font-size:14px;
+margin-left:20px;
 `
 
 const SupportL = styled.div`
 color:#222;
 word-break:keep-all;
+
 `
 
 const SupportR = styled.div`
@@ -66,6 +71,7 @@ align-items:center;
 min-width:340px;
 margin-left:30px;
 font-weight:600;
+
 `
 
 const A = styled.a`
@@ -86,6 +92,7 @@ text-align:left;
 font-size:10px;
 font-style:normal;
 word-break:keep-all;
+margin-left:20px;
 `
 
 export default Footer;
