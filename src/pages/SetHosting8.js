@@ -6,11 +6,7 @@ import airbnblogo_ws from '../img/airbnblogo_ws.png'
 import startHosting from '../img/starthosting.png'
 
 
-
-
-const SetHosting = (props) => {
-  
-
+const SetHosting8 = (props) => {
   const [option, setOption] = React.useState('apt');
 
    // 레이아웃 버튼 선택
@@ -81,9 +77,14 @@ const SetHosting = (props) => {
           </div>
         </div>
 
-        <Link to={`/host/post/${props.param}/2private`}>
-          <button>다음</button>
-        </Link>
+        <div className='btns'>
+          <Link to={`/host/post/${props.param}/7title`}>
+            <button className='preBtn'>이전</button>
+          </Link>
+          <Link to={`/host/post/${props.param}/9price`}>
+            <button className='nextBtn'>다음</button>
+          </Link>
+        </div>
       </div>
 
     </SetHostingWrap>
@@ -147,7 +148,7 @@ const SetHostingWrap = styled.div`
         justify-content: center;
 
         .options{
-          animation: fadein 1s ease-in-out;
+          animation: fadein 1.5s ease-in-out;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -183,7 +184,25 @@ const SetHostingWrap = styled.div`
             }
           }
         }
-        button{
+        .btns{
+          
+        }
+        .preBtn{
+          position:absolute;
+          bottom: 3vh;
+          left: 3vw;
+          background: #000;
+          color: #fff;
+          font-size: 16px;
+          font-weight: 600;
+          padding: 14px 24px;
+          border: 1px solid transparent;
+          border-radius: 8px;
+          cursor:pointer;
+
+        }
+
+        .nextBtn{
           position:absolute;
           bottom: 3vh;
           right: 3vw;
@@ -209,6 +228,5 @@ const SetHostingWrap = styled.div`
         }
 
     `
-      
   }}`
-export default SetHosting;
+export default SetHosting8;

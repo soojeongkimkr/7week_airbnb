@@ -1,18 +1,16 @@
 import React from 'react';
 import styled, {css} from "styled-components";
-import {Link} from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
-import HostHeader from '../components/HostHeader';
 
 
 const StartHosting = () => {
-  
-
+  const param = useParams().id;
+  console.log(param)
 
   return (
     <>
-    <HostHeader/>
     <StartHostingWrap>
       <div className='txt'>
         <Link to ='/'>
@@ -25,7 +23,7 @@ const StartHosting = () => {
             호스팅을<br/>
             시작해보세요
           </div>
-          <Link to='/setHosting'><button>호스팅 시작하기</button></Link>
+          <Link to={`/host/post/${param}/1property`} param={param}><button>호스팅 시작하기</button></Link>
         </div>
       </div>
       <div className='movie'>
