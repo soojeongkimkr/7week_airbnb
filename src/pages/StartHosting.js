@@ -28,8 +28,9 @@ const StartHosting = () => {
       </div>
       <div className='movie'>
         <video autoPlay="autoplay" muted="muted" loop={true}>
-        <source src="https://a0.muscache.com/v/9a/7a/9a7ad4a1-cfab-5f7d-96e6-fda8abceabe7/9a7ad4a1cfab5f7d96e6fda8abceabe7_4000k_1.mp4" type="video/mp4" />
-      </video></div>
+          <source src="https://a0.muscache.com/v/9a/7a/9a7ad4a1-cfab-5f7d-96e6-fda8abceabe7/9a7ad4a1cfab5f7d96e6fda8abceabe7_4000k_1.mp4" type="video/mp4" />
+        </video>
+      </div>
 
     </StartHostingWrap>
     </>

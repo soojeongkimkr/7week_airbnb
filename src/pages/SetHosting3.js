@@ -28,7 +28,7 @@ const SetHosting3 = (props) => {
         </Link>
         <div className="content">
           <div className='detail'>
-            호스팅할 숙소 유형을 알려주세요.
+            숙소 위치는 어디인가요?
           </div>
         </div>
       </div>
@@ -106,14 +106,13 @@ const SetHostingWrap = styled.div`
         background-position: center;
 
         .logo{
-          margin: 30px;
+          margin-top: 3vh;
+          margin-left: 2vw;
           cursor: pointer;
         }
         .content{
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
           margin-top: 40vh;
 
           .detail{
@@ -121,7 +120,8 @@ const SetHostingWrap = styled.div`
           font-size: 48px;
           font-weight: 600;
           line-height: 70px;
-          
+          text-align:left;
+          margin-left: 2vw;
           }
           button{
             width: 180px;

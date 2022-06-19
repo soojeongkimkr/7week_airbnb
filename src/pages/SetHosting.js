@@ -105,14 +105,13 @@ const SetHostingWrap = styled.div`
         background-position: center;
 
         .logo{
-          margin: 30px;
+          margin-top: 3vh;
+          margin-left: 2vw;
           cursor: pointer;
         }
         .content{
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
           margin-top: 40vh;
 
           .detail{
@@ -120,7 +119,8 @@ const SetHostingWrap = styled.div`
           font-size: 48px;
           font-weight: 600;
           line-height: 70px;
-          
+          text-align:left;
+          margin-left: 2vw;
           }
           button{
             width: 180px;

@@ -20,7 +20,13 @@ const SetHosting6 = (props) => {
 
   return (
     <SetHostingWrap>
+      <div className='movie'>
+        <video width="120%"  autoPlay="autoplay" muted="muted" loop={true}>
+          <source src="https://a0.muscache.com/v/d6/12/d6120feb-75fc-52dd-b5bb-5755913fb756/d6120feb75fc52ddb5bb5755913fb756_4000k_1.mp4" type="video/mp4"/>
+        </video>
+        </div>
       <div className='txt'>
+        
         <Link to ='/'>
           <div className='logo'>
             <img width="50px" src={airbnblogo_ws} alt="에어비엔비 로고"/>
@@ -28,7 +34,7 @@ const SetHosting6 = (props) => {
         </Link>
         <div className="content">
           <div className='detail'>
-            호스팅할 숙소 유형을 알려주세요.
+            이제 숙소 사진을 올릴 차례입니다.
           </div>
         </div>
       </div>
@@ -97,31 +103,37 @@ const SetHostingWrap = styled.div`
     return css`
     width: 100%;
     height: 100%;
+    /* position: fixed; */
+    .movie{
+        position: fixed;
+        width:50%;
+        overflow:hidden;
+        
+      }
       
       .txt{
         position: fixed;
         width: 50%;
         height: 100%;
-        background: url(${startHosting});
-        background-position: center;
-
         .logo{
-          margin: 30px;
+          position:absolute;
+          margin-top: 3vh;
+          margin-left: 2vw;
           cursor: pointer;
         }
         .content{
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          margin-top: 40vh;
 
           .detail{
+          position:absolute;
+          bottom: 10vh;
           color: #fff;
           font-size: 48px;
           font-weight: 600;
           line-height: 70px;
-          
+          text-align:left;
+          margin-left: 2vw;
           }
           button{
             width: 180px;
@@ -226,6 +238,7 @@ const SetHostingWrap = styled.div`
           opacity: 1;
           transform: none;
         }
+      
 
     `
   }}`
