@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Login from "../components/Login";
 
 import styled, {css} from "styled-components";
 
@@ -7,9 +8,15 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const IsNotLogin = () => {
-
+  const [modalOpen, setModalOpen] = useState(false);
   const [menuVisible, setmenuVisible] = useState(false);
   
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <IsNotLoginWrap>
@@ -39,7 +46,9 @@ const IsNotLogin = () => {
                   <div
                   style={{fontWeight: '600'}}
                   > 회원가입 </div>
-                  <div> 로그인 </div>
+                  <div onClick={openModal}> 로그인 </div>
+                  <Login open={modalOpen} close={closeModal} header="로그인 또는 회원 가입">
+                  </Login>
                   <div> 숙소 호스팅하기 </div>
                   <div> 체험 호스팅하기 </div>
                   <div> 도움말 </div>
@@ -101,7 +110,7 @@ const IsNotLoginWrap = styled.div`
       }
 
       .header_right_wrap .header_right .header_right_host .language {
-          margin-right: 10px;
+          margin-right: 20px;
           color: #222;
           width: 32px;
           height: 32px;
@@ -187,7 +196,7 @@ const IsNotLoginWrap = styled.div`
       .header_right_wrap .header_right .signinTxt div:nth-of-type(3){
         margin-top:-5px;
       }
-      .header_right_wrap .header_right .signinTxt div:nth-of-type(5){
+      .header_right_wrap .header_right .signinTxt div:nth-of-type(6){
         margin-bottom:5px;
       }
 

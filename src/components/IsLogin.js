@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 
 import styled, {css} from "styled-components";
+
+import {Link} from 'react-router-dom'
 
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const IsLogin = () => {
+  const [menuVisible, setmenuVisible] = useState(false);
 
 
   return (
@@ -14,17 +17,20 @@ const IsLogin = () => {
     <nav className="header_right_wrap">
           <div className="header_right">
             <div className="header_right_host">
-              <div className="host">호스트 모드로 전환</div>
+              <Link to ='/startHosting'><div className="host">호스트 모드로 전환</div></Link>
               <div className="language">
                 <LanguageOutlinedIcon/>
               </div>
             </div>
 
             <div className="signin" tabIndex="-1">
-              <div className="signin_item">
+              <div
+              onClick={()=>{setmenuVisible(!menuVisible)}}
+              className="signin_item">
                 <MenuOutlinedIcon/>
                 <AccountCircleIcon/>
               </div>
+              {menuVisible && 
               <div className="signinTxt">
                 <div>
                   <div
@@ -47,6 +53,7 @@ const IsLogin = () => {
                   <div> 로그아웃 </div>
                 </div>
               </div>
+            }
             </div>
           </div>
         </nav>
@@ -79,12 +86,13 @@ const IsLoginWrap = styled.div`
 
       .header_right_wrap .header_right .header_right_host {
         display: flex;
-        margin-top: 10px;
+        margin-top: 8px;
+        align-items:center;
       }
 
       .header_right_wrap .header_right .header_right_host .host{
         font-size: 14px;
-        font-weight: bold;
+        font-weight: 600;
         padding: 11px 20px;
         border-radius: 100px;
         color: #222;
@@ -101,13 +109,20 @@ const IsLoginWrap = styled.div`
       }
 
       .header_right_wrap .header_right .header_right_host .language {
-          width:100px;
-          height:100px;
-          background:red;
+          margin-right: 20px;
+          color: #222;
+          width: 32px;
+          height: 32px;
+          border-radius:100px;
+          cursor:pointer;
+      }
+      .header_right_wrap .header_right .header_right_host .language :nth-child(1) {
+          font-size: 20px;
+          margin-top: 6px;
       }
 
       .header_right_wrap .header_right .header_right_host .language:hover {
-          background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(247, 247, 247);
       }
 
       /* .header_right_wrap .header_right .header_right_host .language {
@@ -119,35 +134,31 @@ const IsLoginWrap = styled.div`
       } */
 
       .header_right_wrap .header_right .signin {
-          background-color: #fff;
-          width: 77px;
+          display: flex;
+          width: 82px;
           height: 42px;
           border: 1px solid rgba(224,224,224);
           border-radius: 50px;
           box-sizing: border-box;
-          margin-left: 10px;
           
+      }
+      .header_right_wrap .header_right .signin:hover{
+        box-shadow: 2px 3px 3px rgba(65, 10, 63, 0.1);
       }
 
       .header_right_wrap .header_right .signin .signin_item {
-          position: absolute;
-          height: 40px;
           display: flex;
-          top: 12px;
-          bottom: 0;
-          right: -22px;
-          margin: auto;
+          justify-content:center;
+          align-items:center;
+          margin-left: 10px;
           cursor: pointer;
       }
-
-      .header_right_wrap .header_right .signin_item div:first-child {
-          padding-right: 5px;
-          margin-top: 2.5px;
-      }
+      
 
       .header_right_wrap .header_right .signin_item :nth-child(2) {
           color: #696969;
-          font-size: 30px;
+          font-size: 35px;
+          margin-left: 7px;
       }
 
       /* signin 옵션창 */
@@ -171,6 +182,7 @@ const IsLoginWrap = styled.div`
       }
       .header_right_wrap .header_right .signinTxt div{
           margin-bottom:15px;
+          cursor:pointer;
       }
       .header_right_wrap .header_right .signinTxt div:nth-of-type(4):after,
       .header_right_wrap .header_right .signinTxt div:nth-of-type(8):after{
