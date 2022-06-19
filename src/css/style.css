@@ -46,8 +46,16 @@
 }
 
 /* category */
-.category{
-    list-style:none;
+.categorySlider{
+    width:100%;
+}
+
+.slick-prev.slick-disabled:before, .slick-next.slick-disabled:before{
+    opacity:1;
+}
+
+.slick-prev:before, .slick-next:before{
+    color:#000;
 }
 
 /* 로그인 모달 레이어 팝업 */

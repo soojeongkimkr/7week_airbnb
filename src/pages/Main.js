@@ -2,10 +2,7 @@ import React from "react";
 import Login from "../components/Login";
 import Category from "../components/Category";
 import Card from "../components/Card";
-
 import styled, { css } from 'styled-components';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
