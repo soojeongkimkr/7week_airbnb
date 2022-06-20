@@ -1,102 +1,82 @@
 import React, {useState} from "react";
-import styled, {css, keyframes} from "styled-components";
+import styled, {css} from "styled-components";
 
-import airbnblogo from '../img/airbnblogo.png';
+import airbnblogo_s from '../img/airbnblogo_s.png';
 
 import {Link} from 'react-router-dom';
 
-import MenuHotel from './MenuHotel';
-import MenuExp from './MenuExp';
-import IsLogin from "./IsLogin";
-import IsNotLogin from "./IsNotLogin";
+import HostAccount from "./HostAccount";
 
-const Header = () => {
-  const [mode, setMode] = useState("hotel");
-  const [isLogin, setIsLogin] = useState("true")
+
+const HostHeader = () => {
+
   
-  React.useEffect(()=>{
-    
-  },[])
 
   return (
-    <header>
-      <HeaderWrap>
+    <div>
+      <header>
+      <HostHeaderWrap>
         <div className="inner">
           <div className="logo">
-            <Link to ='/'>
-              <img src={airbnblogo} alt="airbnb logo"></img>
+            <Link to ='/host'>
+              <img src={airbnblogo_s} alt="airbnb logo"></img>
             </Link>
           </div>
           <div className="menu_inner">
           <div className="menu">
             <div className="item">
               <span className="item__name"
-              onClick={()=>{setMode("hotel")}
-              }
-              >숙소</span>
+              >투데이</span>
               <span className="item__name"
-              onClick={()=>{setMode("exp")}}
-              >체험</span>
-              <span className="item__name">온라인 체험</span>
-              { mode === 'hotel'?
+              >메세지</span>
+              <span className="item__name">달력</span>
+              <span className="item__name"
+              >인사이트</span>
+              <span className="item__name">메뉴</span>
+
+              {/* { mode === 'hotel'?
               (<MenuHotel/>)
               : mode === 'exp'?
               (<MenuExp/>)
               : null
-              } 
-
-                {/* 체험 옵션창  */}
-                {/* <div className="optionList"> */}
-                   {/* 체험 위치   */}
-                  {/* <div className="location_search option">
-                        <div><img
-                            src="https://a0.muscache.com/im/pictures/fc42dde0-36a7-460e-af89-10b5e44e48d8.jpg?im_w=240&im_q=lowq" alt=""/>
-                        </div>
-                        <div>근처 추천 장소</div>
-                  </div> */}
-                  {/* 체험 날짜  */}
-                  {/* <div className="checkout option">
-                  </div> */}
-                {/* </div> */}
+              }  */}
               </div>
-              
             </div>
           </div>
 
-          {isLogin === "true"?
-            <IsLogin/>
-            :
-            isLogin === "false" ?
-            <IsNotLogin/>
-          : null
-          } 
+          <HostAccount/>
           </div>
-      </HeaderWrap>
+      </HostHeaderWrap>
     </header>
-  );
+
+
+    </div>
+
+  )
 };
 
-const HeaderWrap = styled.div`
+const HostHeaderWrap = styled.div`
   ${({ theme }) => {
     const { fontSizes, device, colors } = theme;
     return css`
       z-index:99;
       position:fixed;
       width: 100%;
-      height: 160px;
+      height: 70px;
       top:0;
       border-bottom:1px solid #eee;
-      background: #fff;  
+      background:#fff;
+
       .inner{
         position:relative;
-        width: 1350px;
+        width: 98%;
         margin: 0 auto;
         
       }
       .logo {
         position: absolute;
-        width: 102px;
-        height: 80px;
+        width: 72px;
+        height: 69px;
         cursor: pointer;
         z-index: 1;
       }
@@ -106,7 +86,7 @@ const HeaderWrap = styled.div`
         top: 0;
         bottom: 0;
         margin: auto;
-        width: 120px;
+        width: 72px;
       }
 
       /* 헤더 중앙 메뉴 */
@@ -138,7 +118,7 @@ const HeaderWrap = styled.div`
       .menu .item .item__name {
           margin-top: 18px;
           padding: 10px 16px;
-          font-size: 16px;
+          font-size: 14px;
           color: #222;
           cursor: pointer;
       }
@@ -162,9 +142,6 @@ const HeaderWrap = styled.div`
 
     .menu .item .item__name:hover::after {
         width: 25px;
-    }
-    .menu .item .item__name:nth-of-type(3):hover::after {
-        width: 60px;
     }
 
 
@@ -391,11 +368,5 @@ const HeaderWrap = styled.div`
         }}
       `;
 
-     
 
-
-
-
-
-export default Header;
-
+export default HostHeader;

@@ -9,7 +9,14 @@ import {
 
 const Footer = () => {
   return (
-    <FooterBox className="footerBox">
+//     <FooterBox className="footerBox">
+    <FooterBox>
+      <div className="inner"
+      style={{
+          position:'relative',
+          width: '1350px',
+          margin: '0 auto'
+      }}>
       <Support>
         <SupportL>© 2022 Airbnb, Inc. ·
           <A href="javascript:void(0);">개인정보 처리방침</A> ·
@@ -37,6 +44,7 @@ const Footer = () => {
       <Address>
         웹사이트 제공자: Airbnb Ireland UC, private unlimited company, 8 Hanover Quay Dublin 2, D02 DP23 Ireland | 이사: Dermot Clarke, Killian Pattwell, Andrea Finnegan | VAT 번호: IE9827384L | 사업자 등록 번호: IE 511825 | 연락처: terms@airbnb.com, 웹사이트, 080-822-0230 | 호스팅 서비스 제공업체: 아마존 웹서비스 | 에어비앤비는 통신판매 중개자로 에어비앤비 플랫폼을 통하여 게스트와 호스트 사이에 이루어지는 통신판매의 당사자가 아닙니다. 에어비앤비 플랫폼을 통하여 예약된 숙소, 체험, 호스트 서비스에 관한 의무와 책임은 해당 서비스를 제공하는 호스트에게 있습니다.
       </Address>
+      </div>
     </FooterBox>
   );
 };
@@ -44,7 +52,9 @@ const Footer = () => {
 const FooterBox = styled.footer`
 position:fixed;
 bottom:0;
-padding:12px 40px 12px;
+right:0;
+width:100%;
+padding:12px 0px 12px;
 border-top:1px solid #EBEBEB;
 background-color:#fff;
 `
@@ -54,11 +64,13 @@ display:flex;
 justify-content:space-between;
 text-align:left;
 font-size:14px;
+margin-left:20px;
 `
 
 const SupportL = styled.div`
 color:#222;
 word-break:keep-all;
+
 `
 
 const SupportR = styled.div`
@@ -67,6 +79,7 @@ align-items:center;
 min-width:340px;
 margin-left:30px;
 font-weight:600;
+
 `
 
 const A = styled.a`
@@ -87,6 +100,7 @@ text-align:left;
 font-size:10px;
 font-style:normal;
 word-break:keep-all;
+margin-left:20px;
 `
 
 export default Footer;
