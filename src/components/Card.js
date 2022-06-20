@@ -12,7 +12,7 @@ const Card = ({ data }) => {
             <div className="cardTitBox">
                 <h4>{data.title}</h4>
                 {/* <p>6월 21일~26일</p> */}
-                <span>￦{data.defaultPrice} /박</span>
+                <span>￦{data.price} /박</span>
             </div>
         </div>
     );
