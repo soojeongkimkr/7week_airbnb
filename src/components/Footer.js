@@ -9,6 +9,7 @@ import {
 
 const Footer = () => {
   return (
+//     <FooterBox className="footerBox">
     <FooterBox>
       <div className="inner"
       style={{
@@ -55,7 +56,7 @@ right:0;
 width:100%;
 padding:12px 0px 12px;
 border-top:1px solid #EBEBEB;
-background: #fff;
+background-color:#fff;
 `
 
 const Support = styled.div`

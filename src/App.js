@@ -1,6 +1,7 @@
 import React from "react";
 import './App.css';
-
+// import theme from './css/theme';
+// import styled, { css } from 'styled-components';
 
 //스타일
 import styled, { css, ThemeProvider } from 'styled-components';
@@ -29,6 +30,7 @@ function App() {
   return (
     <ThemeProvider theme = {theme}>
       <div className="App">
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Main/>}></Route>
           <Route path="/login" element={<Login />}></Route>
