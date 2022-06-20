@@ -41,14 +41,17 @@ const Main = () => {
 };
 
 const Wrap = styled.div`
-padding:80px 40px 0;
+// padding:80px 40px 0;
+padding:180px 40px 0;
 
 @media screen and (max-width: 1130px) {
-  padding:80px 10px 0;
+  // padding:80px 10px 0;
+  padding:180px 10px 0;
 }
 
 @media screen and (max-width: 950px) {
-  padding:80px 0 0;
+  // padding:80px 0 0;
+  padding:180px 0 0;
 }
 `
 
