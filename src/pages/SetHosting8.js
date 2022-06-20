@@ -20,6 +20,11 @@ const SetHosting8 = (props) => {
 
   return (
     <SetHostingWrap>
+      <div className='movie'>
+        <video width="120%"  autoPlay="autoplay" muted="muted" loop={true}>
+          <source src="https://a0.muscache.com/v/55/86/558653ec-da4e-5148-b0e2-828b7a691e86/558653ecda4e5148b0e2828b7a691e86_4000k_1.mp4" type="video/mp4"/>
+        </video>
+      </div>
       <div className='txt'>
         <Link to ='/'>
           <div className='logo'>
@@ -33,48 +38,11 @@ const SetHosting8 = (props) => {
         </div>
       </div>
       <div className='select'>
-        <div className='options'>
-          <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="apt" id="apt" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='apt'>
-              <div>아파트</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/eadbcbdb-d57d-44d9-9a76-665a7a4d1cd7.jpg?im_w=240" alt="아파트"/>
-              </div>
-            </label>
-          </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="house" name="option" id="house"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='house'>
-              <div>주택</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/d1af74db-58eb-46bf-b3f5-e42b6c9892db.jpg?im_w=240" alt="주택"/>
-              </div>
-            </label>
-          </div>
-          <div className='option hotel'
-          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="hotel" name="option" id="hotel"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='hotel'>
-              <div>호텔</div>
-              <div className='pic'>
-                <img width="56px" height="56px" src="https://a0.muscache.com/im/pictures/a2c9ad21-b159-4fd2-b417-d810fb23c6a9.jpg?im_w=240" alt="호텔"/>
-              </div>
-            </label>
-          </div>
+      <div className='title'>
+            숙소 설명 작성하기
+        </div>
+        <div className='address'>
+          <textarea type="text" defaultValue='편안함을 자랑하는 이곳에서 즐거운 시간을 보내실 수 있을 것입니다.'/>
         </div>
 
         <div className='btns'>
@@ -97,15 +65,20 @@ const SetHostingWrap = styled.div`
     return css`
     width: 100%;
     height: 100%;
+    .movie{
+        position: fixed;
+        width:50%;
+        overflow:hidden;
+      }
       
       .txt{
         position: fixed;
         width: 50%;
         height: 100%;
-        background: url(${startHosting});
-        background-position: center;
+      
 
         .logo{
+          osition:absolute;
           margin-top: 3vh;
           margin-left: 2vw;
           cursor: pointer;
@@ -148,46 +121,29 @@ const SetHostingWrap = styled.div`
         height: 100%;
         display: flex;
         justify-content: center;
+        flex-direction:column;
 
-        .options{
-          animation: fadein 1.5s ease-in-out;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        
-
-          .option{
-            display:flex;
-            width: 15vw;
-            height: 90px;
-            border: 2px solid #ddd;
-            border-radius: 20px;
-            font-size: 18px;
-            padding-left: 30px;
-            padding-right: 30px;
-            margin-bottom: 12px; 
-
-            label{
-              display: flex;
-              justify-content: space-between;
-              flex-grow:1;
-            }
-            div{
-              display:flex;
-              justify-content:center;
-              align-items:center;
-            }
-            .pic{
-
-              img{
-                border-radius: 5px;
-              }
-            }
-          }
+      
+        textarea{
+          animation: fadein 1s ease-in-out;
+          outline: none;
+          width: 30vw;
+          height: 200px;
+          border: 2px solid #ddd;
+          border-radius: 20px;
+          font-size: 18px;
+          padding-top: 30px;
+          padding-left: 30px;
+          padding-right: 30px;
+          margin-bottom: 12px; 
         }
-        .btns{
-          
+        
+        .title{
+          animation: fadein 1s ease-in-out;
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 20px;
+          margin-top: -40px;
         }
         .preBtn{
           position:absolute;

@@ -7,7 +7,7 @@ import startHosting from '../img/starthosting.png'
 
 
 const SetHosting3 = (props) => {
-  const [option, setOption] = React.useState('apt');
+  const [option, setOption] = React.useState('island');
 
    // 레이아웃 버튼 선택
    const isChecked = (e) => {
@@ -33,48 +33,62 @@ const SetHosting3 = (props) => {
         </div>
       </div>
       <div className='select'>
+        <div className='address'>
+          <input type="text" placeholder='주소를 입력하세요.'>
+          </input>
+        </div>
+        <div className='title'>
+          카테고리를 선택해주세요.
+        </div>
+        
+        {/* 카테고리 옵션들 */}
         <div className='options'>
-          <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="apt" id="apt" name="option"
+          <div className='option island'
+          style={option === 'island' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
+            <input type="radio" value="island" id="island" name="option"
             onChange={isChecked}
             style={{display:'none'}}
             />
-            <label htmlFor='apt'>
-              <div>아파트</div>
+            <label htmlFor='island'>
+              <div>섬</div>
               <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/eadbcbdb-d57d-44d9-9a76-665a7a4d1cd7.jpg?im_w=240" alt="아파트"/>
+                
               </div>
             </label>
           </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          <div className='option park'
+          style={option === 'park' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
-            <input type="radio" value="house" name="option" id="house"
+            <input type="radio" value="park"  id="park" name="option"
             onChange={isChecked}
             style={{display:'none'}}
             />
-            <label htmlFor='house'>
-              <div>주택</div>
+            <label htmlFor='park'>
+              <div>국립공원</div>
               <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/d1af74db-58eb-46bf-b3f5-e42b6c9892db.jpg?im_w=240" alt="주택"/>
+                
               </div>
             </label>
           </div>
-          <div className='option hotel'
-          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          <div className='option wood'
+          style={option === 'wood' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
-            <input type="radio" value="hotel" name="option" id="hotel"
+            <input type="radio" value="wood"  id="wood" name="option"
             onChange={isChecked}
             style={{display:'none'}}
             />
-            <label htmlFor='hotel'>
-              <div>호텔</div>
+            <label htmlFor='wood'>
+              <div>통나무집</div>
               <div className='pic'>
-                <img width="56px" height="56px" src="https://a0.muscache.com/im/pictures/a2c9ad21-b159-4fd2-b417-d810fb23c6a9.jpg?im_w=240" alt="호텔"/>
+                
               </div>
             </label>
           </div>
+          
+          
+          
+          
+          
         </div>
 
         <div className='btns'>
@@ -123,18 +137,6 @@ const SetHostingWrap = styled.div`
           text-align:left;
           margin-left: 2vw;
           }
-          button{
-            width: 180px;
-            height: 50px;
-            margin: 40px;
-            color: #fff;
-            font-weight: 700;
-            font-size: 16px;
-            border-radius: 10px;
-            border: 1px solid transparent;
-            background: linear-gradient(to right, rgba(209,50,60), rgba(196,45,101));
-            cursor:pointer;
-          }
         }
       }
 
@@ -146,18 +148,15 @@ const SetHostingWrap = styled.div`
         height: 100%;
         display: flex;
         justify-content: center;
+        flex-direction:column;
 
-        .options{
-          animation: fadein 1.5s ease-in-out;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        
-
-          .option{
-            display:flex;
-            width: 15vw;
+        .address{
+          animation: fadein 1s ease-in-out;
+          margin-bottom: 5vh;
+           
+          input{
+            outline: none;
+            width: 25vw;
             height: 90px;
             border: 2px solid #ddd;
             border-radius: 20px;
@@ -165,27 +164,56 @@ const SetHostingWrap = styled.div`
             padding-left: 30px;
             padding-right: 30px;
             margin-bottom: 12px; 
-
-            label{
-              display: flex;
-              justify-content: space-between;
-              flex-grow:1;
-            }
-            div{
-              display:flex;
-              justify-content:center;
-              align-items:center;
-            }
-            .pic{
-
-              img{
-                border-radius: 5px;
-              }
-            }
           }
         }
-        .btns{
+        .title{
+          animation: fadein 1s ease-in-out;
+          margin-bottom: 2vh;
+          /* text-align:left; */
+          /* margin-left: 6vw; */
+        }
+
+        .options{
+          animation: fadein 1s ease-in-out;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          justify-content: center;
+          align-items: center;
+          margin-left: 15vw;
+          margin-right: 15vw; 
           
+          .option{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            width: 5vw;
+            height: 7vh;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 18px;
+            padding : 20px;
+            margin: 10px;
+            margin-bottom: 12px; 
+
+            label{
+              display:flex;
+              /* flex-direction: column; */
+              justify-content: center;
+              flex-grow:1;
+              width: 7vw;
+              height: 7vh;
+              padding: 20px;
+
+              div{
+              display:flex;
+              justify-content:center;
+              align-items: center;
+              
+            }
+            }
+            
+            
+          }
         }
         .preBtn{
           position:absolute;

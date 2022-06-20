@@ -2,12 +2,55 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import {Link} from 'react-router-dom'
 
-import airbnblogo_ws from '../img/airbnblogo_ws.png'
-import startHosting from '../img/starthosting.png'
+import airbnblogo_ws from '../img/airbnblogo_ws.png';
+import startHosting from '../img/starthosting.png';
+
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 
 const SetHosting4 = (props) => {
   const [option, setOption] = React.useState('apt');
+
+  const [guestCount, setGuestCount] = React.useState(1);
+  const [bedCount, setBedCount] = React.useState(1);
+  const [bedroomCount, setBedroomCount] = React.useState(1);
+  const [bathCount, setBathCount] = React.useState(1);
+
+
+  const guestplus = () => {
+    setGuestCount( guestCount+1 )
+  }
+  const guestminus = () => {
+    if(guestCount > 1)
+    setGuestCount( guestCount-1 )
+  }
+
+  const bedplus = () => {
+    setBedCount( bedCount+1 )
+  }
+  const bedminus = () => {
+    if(bedCount > 1)
+    setBedCount( bedCount-1 )
+  }
+
+  const bedroomplus = () => {
+    setBedroomCount( bedroomCount+1 )
+  }
+  const bedroomminus = () => {
+    if(bedroomCount > 1)
+    setBedroomCount( bedroomCount-1 )
+  }
+
+  const bathplus = () => {
+    setBathCount( bathCount+1 )
+  }
+  const bathminus = () => {
+    if(bathCount > 1)
+    setBathCount( bathCount-1 )
+  }
+
+
 
    // 레이아웃 버튼 선택
    const isChecked = (e) => {
@@ -15,6 +58,7 @@ const SetHosting4 = (props) => {
       setOption(e.target.value)
     }
   }
+  
   
 
 
@@ -34,44 +78,77 @@ const SetHosting4 = (props) => {
       </div>
       <div className='select'>
         <div className='options'>
-          <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
+          <div className='option apt'>
             <input type="radio" value="apt" id="apt" name="option"
             onChange={isChecked}
             style={{display:'none'}}
             />
             <label htmlFor='apt'>
-              <div>아파트</div>
+              <div className = 'title'>게스트</div>
               <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/eadbcbdb-d57d-44d9-9a76-665a7a4d1cd7.jpg?im_w=240" alt="아파트"/>
+                <RemoveCircleOutlineIcon onClick={guestminus}
+                style={guestCount === 1 ? {marginRight:'15px', color:'#ddd', fontSize: '35px'}: {marginRight:'15px', color:'#717171', fontSize: '35px'}}
+                />
+                  <div className='num'>
+                  {guestCount}
+                  </div>
+                <AddCircleOutlineOutlinedIcon onClick={guestplus}
+                style={{marginLeft:'15px', color:'#717171', fontSize: '35px'}}
+                />
               </div>
             </label>
           </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
+          <div className='option house'> 
             <input type="radio" value="house" name="option" id="house"
             onChange={isChecked}
             style={{display:'none'}}
             />
             <label htmlFor='house'>
-              <div>주택</div>
+            <div className= 'title'>침대</div>
               <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/d1af74db-58eb-46bf-b3f5-e42b6c9892db.jpg?im_w=240" alt="주택"/>
+                <RemoveCircleOutlineIcon onClick={bedminus} 
+                style={bedCount === 1 ? {marginRight:'15px', color:'#ddd', fontSize: '35px'}: {marginRight:'15px', color:'#717171', fontSize: '35px'}}
+                />
+                  <div className='num'>
+                  {bedCount}
+                  </div>
+                <AddCircleOutlineOutlinedIcon onClick={bedplus} style={{marginLeft:'15px', color:'#717171', fontSize: '35px'}}/>
               </div>
             </label>
           </div>
-          <div className='option hotel'
-          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
+          <div className='option hotel'> 
             <input type="radio" value="hotel" name="option" id="hotel"
             onChange={isChecked}
             style={{display:'none'}}
             />
             <label htmlFor='hotel'>
-              <div>호텔</div>
+            <div className= 'title'>침실</div>
               <div className='pic'>
-                <img width="56px" height="56px" src="https://a0.muscache.com/im/pictures/a2c9ad21-b159-4fd2-b417-d810fb23c6a9.jpg?im_w=240" alt="호텔"/>
+                <RemoveCircleOutlineIcon onClick={bedroomminus}
+                style={bedroomCount === 1 ? {marginRight:'15px', color:'#ddd', fontSize: '35px'}: {marginRight:'15px', color:'#717171', fontSize: '35px'}}
+                />
+                  <div className='num'>
+                  {bedroomCount}
+                  </div>
+                <AddCircleOutlineOutlinedIcon onClick={bedroomplus} style={{marginLeft:'15px', color:'#717171', fontSize: '35px'}}/>
+              </div>
+            </label>
+          </div>
+          <div className='option hotel'> 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+            <div className= 'title'>욕실</div>
+              <div className='pic'>
+                <RemoveCircleOutlineIcon onClick={bathminus}
+                style={bathCount === 1 ? {marginRight:'15px', color:'#ddd', fontSize: '35px'}: {marginRight:'15px', color:'#717171', fontSize: '35px'}}
+                />
+                  <div className='num'>
+                  {bathCount}
+                  </div>
+                <AddCircleOutlineOutlinedIcon onClick={bathplus} style={{marginLeft:'15px', color:'#717171', fontSize: '35px'}}/>
               </div>
             </label>
           </div>
@@ -146,9 +223,10 @@ const SetHostingWrap = styled.div`
         height: 100%;
         display: flex;
         justify-content: center;
+        
 
         .options{
-          animation: fadein 1.5s ease-in-out;
+          animation: fadein 1s ease-in-out;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -157,9 +235,9 @@ const SetHostingWrap = styled.div`
 
           .option{
             display:flex;
-            width: 15vw;
-            height: 90px;
-            border: 2px solid #ddd;
+            width: 25vw;
+            height: 80px;
+            /* border: 2px solid #ddd; */
             border-radius: 20px;
             font-size: 18px;
             padding-left: 30px;
@@ -175,11 +253,20 @@ const SetHostingWrap = styled.div`
               display:flex;
               justify-content:center;
               align-items:center;
+              
+              color: #222;
+            }
+            .title{
+              font-size: 26px;
+              font-weight: 600;
             }
             .pic{
+              
+              .num{
+                font-size: 20px;
+                width: 20px;
+                height: 20px;
 
-              img{
-                border-radius: 5px;
               }
             }
           }

@@ -32,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main/>}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/detail" element={<Detail/>}></Route>
+          <Route path="/hotel/:id" element={<Detail/>}></Route>
           <Route path='/startHosting' element={<StartHosting/>}></Route>
           <Route path="/host" element={<HostPage/>}></Route>
           <Route path="/host/post/:id/1property" element={<SetHosting/>}></Route>

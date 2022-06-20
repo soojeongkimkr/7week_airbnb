@@ -32,19 +32,24 @@ const SetHosting5 = (props) => {
           </div>
         </div>
       </div>
+
       <div className='select'>
+        <div className='title'>
+          특별히 내세울 만한 편의시설이 있나요?
+        </div>
         <div className='options'>
-          <div className='option apt'
+          {/* <div className='option apt'
           style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
             <input type="radio" value="apt" id="apt" name="option"
             onChange={isChecked}
             style={{display:'none'}}
             />
             <label htmlFor='apt'>
-              <div>아파트</div>
+              
               <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/eadbcbdb-d57d-44d9-9a76-665a7a4d1cd7.jpg?im_w=240" alt="아파트"/>
+              
               </div>
+              <div>아파트</div>
             </label>
           </div>
           <div className='option house'
@@ -55,12 +60,14 @@ const SetHosting5 = (props) => {
             style={{display:'none'}}
             />
             <label htmlFor='house'>
-              <div>주택</div>
+              
               <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/d1af74db-58eb-46bf-b3f5-e42b6c9892db.jpg?im_w=240" alt="주택"/>
+
               </div>
+              <div>주택</div>
             </label>
           </div>
+
           <div className='option hotel'
           style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
@@ -69,12 +76,31 @@ const SetHosting5 = (props) => {
             style={{display:'none'}}
             />
             <label htmlFor='hotel'>
-              <div>호텔</div>
+              
               <div className='pic'>
-                <img width="56px" height="56px" src="https://a0.muscache.com/im/pictures/a2c9ad21-b159-4fd2-b417-d810fb23c6a9.jpg?im_w=240" alt="호텔"/>
+
               </div>
+              <div>호텔</div>
+            </label>
+          </div> */}
+
+          {/* 데이터 가져와서 맵돌리기 */}
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
             </label>
           </div>
+          
         </div>
 
         <div className='btns'>
@@ -146,35 +172,49 @@ const SetHostingWrap = styled.div`
         height: 100%;
         display: flex;
         justify-content: center;
+        align-items:center;
+        flex-direction:column;
+        /* align-items:stretch; */
+
+        .title{
+          animation: fadein 1s ease-in-out;
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
 
         .options{
-          animation: fadein 1.5s ease-in-out;
-          display: flex;
+          animation: fadein 1s ease-in-out;
+          display:grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          align-items:stretch;
+          /* display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: center;
+          align-items: center; */
         
 
           .option{
-            display:flex;
-            width: 15vw;
-            height: 90px;
+            /* display:flex; */
+            width: 8vw;
+            height: 8vh;
             border: 2px solid #ddd;
-            border-radius: 20px;
+            border-radius: 10px;
             font-size: 18px;
-            padding-left: 30px;
-            padding-right: 30px;
+            padding : 20px;
+            margin: 10px;
             margin-bottom: 12px; 
 
             label{
               display: flex;
+              flex-direction:column;
               justify-content: space-between;
-              flex-grow:1;
+              /* flex-grow:1; */
             }
             div{
-              display:flex;
+              /* display:flex;
               justify-content:center;
-              align-items:center;
+              align-items:center; */
             }
             .pic{
 

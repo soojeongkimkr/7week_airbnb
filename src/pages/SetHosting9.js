@@ -3,23 +3,35 @@ import styled, {css} from "styled-components";
 import {Link} from 'react-router-dom'
 
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
-import startHosting from '../img/starthosting.png'
+
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+
 
 
 const SetHosting9 = (props) => {
-  const [option, setOption] = React.useState('apt');
+  const [priceCount, setPriceCount] = React.useState(10000);
+  
 
-   // 레이아웃 버튼 선택
-   const isChecked = (e) => {
-    if (e.target.checked){
-      setOption(e.target.value)
-    }
+  const pricePlus = () => {
+    setPriceCount( priceCount+5000 )
   }
+  const priceMinus = () => {
+    if(priceCount > 10000)
+    setPriceCount( priceCount-5000 )
+  }
+
+ 
   
 
 
   return (
     <SetHostingWrap>
+      <div className='movie'>
+        <video width="120%"  autoPlay="autoplay" muted="muted" loop={true}>
+          <source src="https://a0.muscache.com/v/9c/d4/9cd47434-c6bd-58ec-90b7-b50aa7dba461/9cd47434c6bd58ec90b7b50aa7dba461_4000k_1.mp4" type="video/mp4"/>
+        </video>
+      </div>
       <div className='txt'>
         <Link to ='/'>
           <div className='logo'>
@@ -33,49 +45,26 @@ const SetHosting9 = (props) => {
         </div>
       </div>
       <div className='select'>
-        <div className='options'>
-          <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="apt" id="apt" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='apt'>
-              <div>아파트</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/eadbcbdb-d57d-44d9-9a76-665a7a4d1cd7.jpg?im_w=240" alt="아파트"/>
-              </div>
-            </label>
-          </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="house" name="option" id="house"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='house'>
-              <div>주택</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/d1af74db-58eb-46bf-b3f5-e42b6c9892db.jpg?im_w=240" alt="주택"/>
-              </div>
-            </label>
-          </div>
-          <div className='option hotel'
-          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="hotel" name="option" id="hotel"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='hotel'>
-              <div>호텔</div>
-              <div className='pic'>
-                <img width="56px" height="56px" src="https://a0.muscache.com/im/pictures/a2c9ad21-b159-4fd2-b417-d810fb23c6a9.jpg?im_w=240" alt="호텔"/>
-              </div>
-            </label>
+
+      <div className='options'>
+        <div className='price'>
+        <RemoveCircleOutlineIcon onClick={priceMinus}
+          style={priceCount === 10000 ? {marginRight:'25px', color:'#ddd', fontSize: '35px'}: {marginRight:'25px', color:'#717171', fontSize: '35px'}}
+          />
+        <div className='option apt'>
+          <div className='pic'>
+            <div className='num'>
+              ₩ {priceCount}
+            </div>
           </div>
         </div>
+        <AddCircleOutlineOutlinedIcon onClick={pricePlus}
+        style={{marginLeft:'25px', color:'#717171', fontSize: '35px'}}
+        />
+        </div>
+        <div className='perday'>/ 박</div>
+      </div>
+      
 
         <div className='btns'>
           <Link to={`/host/post/${props.param}/8description`}>
@@ -97,15 +86,20 @@ const SetHostingWrap = styled.div`
     return css`
     width: 100%;
     height: 100%;
+    .movie{
+        position: fixed;
+        width:50%;
+        overflow:hidden;
+      }
       
       .txt{
         position: fixed;
         width: 50%;
         height: 100%;
-        background: url(${startHosting});
-        background-position: center;
+      
 
         .logo{
+          osition:absolute;
           margin-top: 3vh;
           margin-left: 2vw;
           cursor: pointer;
@@ -150,45 +144,45 @@ const SetHostingWrap = styled.div`
         justify-content: center;
 
         .options{
-          animation: fadein 1.5s ease-in-out;
+          animation: fadein 1s ease-in-out;
           display: flex;
-          flex-direction: column;
           justify-content: center;
           align-items: center;
+          flex-direction:column;
+
+          .price{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+          }
         
 
           .option{
             display:flex;
-            width: 15vw;
+            width: 10vw;
             height: 90px;
-            border: 2px solid #ddd;
+            border: 1px solid #999;
             border-radius: 20px;
             font-size: 18px;
             padding-left: 30px;
             padding-right: 30px;
             margin-bottom: 12px; 
 
-            label{
-              display: flex;
-              justify-content: space-between;
-              flex-grow:1;
-            }
-            div{
+            .pic{
               display:flex;
+              width: 15vw;
+              height: 90px;
               justify-content:center;
               align-items:center;
-            }
-            .pic{
 
-              img{
-                border-radius: 5px;
+              .num{
+                font-size:40px;
+                font-weight: 600;
               }
             }
+            }
           }
-        }
-        .btns{
-          
-        }
+
         .preBtn{
           position:absolute;
           bottom: 3vh;
@@ -218,7 +212,7 @@ const SetHostingWrap = styled.div`
           cursor:pointer;
 
         }
-      }
+      
       @keyframes fadein{
         0% {
           opacity: 0;
@@ -228,7 +222,7 @@ const SetHostingWrap = styled.div`
           opacity: 1;
           transform: none;
         }
-
+      }
     `
   }}`
 export default SetHosting9;

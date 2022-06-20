@@ -9,6 +9,7 @@ import startHosting from '../img/starthosting.png'
 
 
 const SetHosting = (props) => {
+  console.log(props.param)
   
 
   const [option, setOption] = React.useState('apt');
@@ -81,7 +82,7 @@ const SetHosting = (props) => {
           </div>
         </div>
 
-        <Link to={`/host/post/${props.param}/2private`}>
+        <Link to={`/host/post/${props.param}/2private`} >
           <button>다음</button>
         </Link>
       </div>
