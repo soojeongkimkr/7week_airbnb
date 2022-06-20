@@ -137,12 +137,20 @@
     border-radius: 0 0 8px 8px;
 }
 
-.modal>section>main>form>input:nth-last-of-type(1),
-.modal>section>main>button {
+.modal>section>main>form>input:nth-last-of-type(1) {
     margin-top: 20px;
     border: none;
     background-color: #DE1163;
     color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+}
+
+.modal>section>main>button{
+    margin-top: 20px;
+    border: 1px solid #222;
+    background-color: #fff;
+    color: #222;
     font-weight: 700;
     border-radius: 8px;
 }

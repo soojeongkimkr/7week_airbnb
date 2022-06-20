@@ -25,7 +25,10 @@ import SetHosting9 from "./pages/SetHosting9"
 import SetHosting10 from "./pages/SetHosting10"
 
 function App() {
-  
+  const REST_API_KEY = "[0df0cd5d1dad03decd6a4ad7d9850366]";
+  // const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  const REDIRECT_URI = "http://localhost:3000";
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   return (
     <ThemeProvider theme = {theme}>
