@@ -39,14 +39,6 @@ export const LoginSns = (token) => {
     return { type: LOG_IN, token };
 };
 
-export const setCookie = (name: String, value: String, option?: any) => {
-    return cookies.set(name, value, {...option})
-}
-
-export const getCookie = (name: string) => {
-    return cookies.get(name)
-}
-
 // middlewares
 // 회원가입
 export const signupDB = (email, password) => {

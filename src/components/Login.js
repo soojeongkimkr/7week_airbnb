@@ -36,7 +36,7 @@ const Login = (props) => {
     }
   };
 
-  // 회원 sns
+  // 회원 sns 링크
   const googleSns = 'http://idontcare.shop/oauth2/authorization/google'
   const naverSns = 'http://idontcare.shop/oauth2/authorization/naver'
   const kakaoSns = 'http://idontcare.shop/oauth2/authorization/kakao'
@@ -45,7 +45,7 @@ const Login = (props) => {
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? 'openModal modal' : 'modal'}>
       {open ? (
-        <section>
+        <section style={{textAlign:"center"}}>
           <header>
             <button className="close" onClick={close}>
               &times;
@@ -62,9 +62,13 @@ const Login = (props) => {
               <Input type="password" placeholder="인증코드(회원가입)" style={{ marginTop: "20px" }} />
               <InputSubmit type="submit" value="계속" onClick={signUpForm} />
             </Form>
-            <a href={googleSns}>구글로 로그인하기</a><br />
-            <a href={naverSns}>네이버로 로그인하기</a><br />
-            <a href={kakaoSns}>카카오로 로그인하기</a>
+            <div className="orBox">
+              <p className="orLogin">또는</p>
+              <div className="loginLine"/>
+            </div>
+            <a href={googleSns} className="snsLogin">구글로 로그인하기</a>
+            <a href={naverSns} className="snsLogin">네이버로 로그인하기</a>
+            <a href={kakaoSns} className="snsLogin">카카오로 로그인하기</a>
             <button>이메일로 로그인하기</button>
           </main>
           {/* <footer>
@@ -79,7 +83,6 @@ const Login = (props) => {
 };
 
 const Form = styled.form`
-
 `
 
 const Input = styled.input`
