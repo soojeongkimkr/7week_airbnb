@@ -7,6 +7,7 @@ import instance from "../../shared/api";
 const LOG_IN = "member/LOG_IN";
 const LOGIN_CHECK = "member/LOGIN_CHECK";
 const LOG_OUT = "member/LOG_OUT";
+const LOG_IN_SNS = "member/LOG_IN_SNS";
 
 // 초기값
 const initialState = {
@@ -28,6 +29,11 @@ export const Logincheck = (userId) => {
 // 로그아웃
 export const Logout = () => {
     return { type: LOG_OUT };
+};
+
+// sns 로그인
+export const LoginSns = (token) => {
+    return { type: LOG_IN, token };
 };
 
 // middlewares
@@ -97,6 +103,13 @@ export const signupDB = (email, password) => {
 //     };
 // };
 
+// sns 로그인
+export const loginSns = (email, password) => {
+    return async function (dispatch, getState) {
+        localStorage.setItem("email", email);
+    };
+};
+
 // 로그아웃
 // export const LogoutFB = () => {
 //     return function (dispatch, getState) {
@@ -116,8 +129,11 @@ export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
         // case "member/LOG_IN":
         //     state.token = action.token;
-
         //     return state;
+
+        case "member/LOG_IN_SNS":
+            state.token = action.token;
+            return state;
 
         // case "member/LOGIN_CHECK":
         //     state.userId = action.userId;

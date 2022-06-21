@@ -9,6 +9,7 @@ import theme from './theme';
 
 import { Route, Routes } from 'react-router-dom';
 import Login from "./components/Login";
+import Auth from "./pages/Auth";
 import Main from "./pages/Main";
 import Detail from "./pages/Detail";
 import StartHosting from './pages/StartHosting'
@@ -37,6 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main/>}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/code/auth" element={<Auth />}></Route>
           <Route path="/detail" element={<Detail/>}></Route>
           <Route path='/startHosting' element={<StartHosting/>}></Route>
           <Route path="/host" element={<HostPage/>}></Route>
