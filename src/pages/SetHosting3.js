@@ -16,10 +16,11 @@ const SetHosting3 = (props) => {
     }
   }
   
-
-
+  
   return (
     <SetHostingWrap>
+      
+      {/* 좌측 화면 */}
       <div className='txt'>
         <Link to ='/'>
           <div className='logo'>
@@ -32,65 +33,16 @@ const SetHosting3 = (props) => {
           </div>
         </div>
       </div>
+
+      {/* 우측 화면 */}
       <div className='select'>
-        <div className='address'>
-          <input type="text" placeholder='주소를 입력하세요.'>
-          </input>
-        </div>
-        <div className='title'>
-          카테고리를 선택해주세요.
-        </div>
-        
-        {/* 카테고리 옵션들 */}
-        <div className='options'>
-          <div className='option island'
-          style={option === 'island' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="island" id="island" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='island'>
-              <div>섬</div>
-              <div className='pic'>
-                
-              </div>
-            </label>
-          </div>
-          <div className='option park'
-          style={option === 'park' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="park"  id="park" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='park'>
-              <div>국립공원</div>
-              <div className='pic'>
-                
-              </div>
-            </label>
-          </div>
-          <div className='option wood'
-          style={option === 'wood' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="wood"  id="wood" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='wood'>
-              <div>통나무집</div>
-              <div className='pic'>
-                
-              </div>
-            </label>
-          </div>
-          
-          
-          
-          
-          
+          <div className='address'>
+            <input type="text" placeholder='주소를 입력하세요.'>
+            </input>
         </div>
 
+
+        {/* 버튼 */}
         <div className='btns'>
           <Link to={`/host/post/${props.param}/2private`}>
             <button className='preBtn'>이전</button>
@@ -150,6 +102,7 @@ const SetHostingWrap = styled.div`
         justify-content: center;
         flex-direction:column;
 
+
         .address{
           animation: fadein 1s ease-in-out;
           margin-bottom: 5vh;
@@ -166,55 +119,8 @@ const SetHostingWrap = styled.div`
             margin-bottom: 12px; 
           }
         }
-        .title{
-          animation: fadein 1s ease-in-out;
-          margin-bottom: 2vh;
-          /* text-align:left; */
-          /* margin-left: 6vw; */
-        }
+        
 
-        .options{
-          animation: fadein 1s ease-in-out;
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
-          justify-content: center;
-          align-items: center;
-          margin-left: 15vw;
-          margin-right: 15vw; 
-          
-          .option{
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            width: 5vw;
-            height: 7vh;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 18px;
-            padding : 20px;
-            margin: 10px;
-            margin-bottom: 12px; 
-
-            label{
-              display:flex;
-              /* flex-direction: column; */
-              justify-content: center;
-              flex-grow:1;
-              width: 7vw;
-              height: 7vh;
-              padding: 20px;
-
-              div{
-              display:flex;
-              justify-content:center;
-              align-items: center;
-              
-            }
-            }
-            
-            
-          }
-        }
         .preBtn{
           position:absolute;
           bottom: 3vh;

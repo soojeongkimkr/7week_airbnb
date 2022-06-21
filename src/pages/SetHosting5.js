@@ -34,40 +34,59 @@ const SetHosting5 = (props) => {
       </div>
 
       <div className='select'>
+        <div className='contents'>
         <div className='title'>
           특별히 내세울 만한 편의시설이 있나요?
         </div>
         <div className='options'>
-          {/* <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="apt" id="apt" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='apt'>
-              
-              <div className='pic'>
-              
-              </div>
-              <div>아파트</div>
-            </label>
-          </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          
+
+          {/* 데이터 가져와서 맵돌리기 */}
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
-            <input type="radio" value="house" name="option" id="house"
+            <input type="radio" value="hotel" name="option" id="hotel"
             onChange={isChecked}
             style={{display:'none'}}
             />
-            <label htmlFor='house'>
-              
-              <div className='pic'>
-
-              </div>
-              <div>주택</div>
+            <label htmlFor='hotel'>
+              <div>호텔</div>
             </label>
           </div>
 
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              <div>호텔</div>
+            </label>
+          </div>
           <div className='option hotel'
           style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
@@ -82,9 +101,261 @@ const SetHosting5 = (props) => {
               </div>
               <div>호텔</div>
             </label>
-          </div> */}
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
 
-          {/* 데이터 가져와서 맵돌리기 */}
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div><div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
+          <div className='option hotel'
+          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          > 
+            <input type="radio" value="hotel" name="option" id="hotel"
+            onChange={isChecked}
+            style={{display:'none'}}
+            />
+            <label htmlFor='hotel'>
+              
+              <div className='pic'>
+
+              </div>
+              <div>호텔</div>
+            </label>
+          </div>
           <div className='option hotel'
           style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
@@ -102,7 +373,8 @@ const SetHosting5 = (props) => {
           </div>
           
         </div>
-
+        
+        </div>
         <div className='btns'>
           <Link to={`/host/post/${props.param}/4numbers`}>
             <button className='preBtn'>이전</button>
@@ -112,7 +384,7 @@ const SetHosting5 = (props) => {
           </Link>
         </div>
       </div>
-
+      
     </SetHostingWrap>
   )
 }
@@ -146,9 +418,10 @@ const SetHostingWrap = styled.div`
           font-size: 48px;
           font-weight: 600;
           line-height: 70px;
-          text-align:left;
+          text-align: left;
           margin-left: 2vw;
           }
+          
           button{
             width: 180px;
             height: 50px;
@@ -174,7 +447,13 @@ const SetHostingWrap = styled.div`
         justify-content: center;
         align-items:center;
         flex-direction:column;
-        /* align-items:stretch; */
+        
+        .contents{
+          overflow-y: scroll;
+          height:80%;
+          padding: 0 30px;
+          
+        }
 
         .title{
           animation: fadein 1s ease-in-out;
@@ -185,9 +464,10 @@ const SetHostingWrap = styled.div`
 
         .options{
           animation: fadein 1s ease-in-out;
-          display:grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          align-items:stretch;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          align-items: stretch;
+          
           /* display: flex;
           flex-direction: column;
           justify-content: center;

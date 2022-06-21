@@ -11,14 +11,33 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 
 const SetHosting9 = (props) => {
   const [priceCount, setPriceCount] = React.useState(10000);
+  const [servicePriceCount, setServicePriceCount] = React.useState(10000);
+  const [cleanPriceCount, setCleanPriceCount] = React.useState(10000);
   
 
   const pricePlus = () => {
     setPriceCount( priceCount+5000 )
   }
+
   const priceMinus = () => {
     if(priceCount > 10000)
     setPriceCount( priceCount-5000 )
+  }
+  const servicePricePlus = () => {
+    setServicePriceCount( servicePriceCount + 5000 )
+  }
+  
+  const servicePriceMinus = () => {
+    if(servicePriceCount > 10000)
+    setServicePriceCount( servicePriceCount - 5000 )
+  }
+  const cleanPricePlus = () => {
+    setCleanPriceCount( cleanPriceCount + 5000 )
+  }
+  
+  const cleanPriceMinus = () => {
+    if(cleanPriceCount > 10000)
+    setCleanPriceCount( cleanPriceCount - 5000 )
   }
 
  
@@ -46,8 +65,10 @@ const SetHosting9 = (props) => {
       </div>
       <div className='select'>
 
+
+      {/* 하루 숙박비 */}
       <div className='options'>
-        <div className='price'>
+        <div className='price dayprice'>
         <RemoveCircleOutlineIcon onClick={priceMinus}
           style={priceCount === 10000 ? {marginRight:'25px', color:'#ddd', fontSize: '35px'}: {marginRight:'25px', color:'#717171', fontSize: '35px'}}
           />
@@ -63,6 +84,45 @@ const SetHosting9 = (props) => {
         />
         </div>
         <div className='perday'>/ 박</div>
+
+        <hr style={{width: '100px', opacity:'0.3', marginTop:'50px'}}/>
+
+
+        {/* 청소비 */}
+        <div className='cleanprice' style={{marginTop:'50px'}}>청소비</div>
+        <div className='price'>
+        <RemoveCircleOutlineIcon onClick={cleanPriceMinus}
+          style={cleanPriceCount === 10000 ? {marginRight:'25px', color:'#ddd', fontSize: '35px'}: {marginRight:'25px', color:'#717171', fontSize: '35px'}}
+          />
+        <div className='option apt'>
+          <div className='pic'>
+            <div className='num'>
+              ₩ {cleanPriceCount}
+            </div>
+          </div>
+        </div>
+        <AddCircleOutlineOutlinedIcon onClick={cleanPricePlus}
+        style={{marginLeft:'25px', color:'#717171', fontSize: '35px'}}
+        />
+        </div>
+
+        {/* 서비스비 */}
+        <div className='serviceprice' style={{marginTop:'30px'}}>서비스비</div>
+        <div className='price'>
+        <RemoveCircleOutlineIcon onClick={servicePriceMinus}
+          style={servicePriceCount === 10000 ? {marginRight:'25px', color:'#ddd', fontSize: '35px'}: {marginRight:'25px', color:'#717171', fontSize: '35px'}}
+          />
+        <div className='option apt'>
+          <div className='pic'>
+            <div className='num'>
+              ₩ {servicePriceCount}
+            </div>
+          </div>
+        </div>
+        <AddCircleOutlineOutlinedIcon onClick={servicePricePlus}
+        style={{marginLeft:'25px', color:'#717171', fontSize: '35px'}}
+        />
+        </div>
       </div>
       
 
@@ -150,10 +210,16 @@ const SetHostingWrap = styled.div`
           align-items: center;
           flex-direction:column;
 
+          .dayprice{
+            margin-top: 0px;
+
+          }
+
           .price{
             display:flex;
             justify-content: center;
             align-items: center;
+            margin-top: 20px;
           }
         
 
