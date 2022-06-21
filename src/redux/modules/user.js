@@ -1,7 +1,10 @@
 import axios from "axios";
+import { Cookies } from "react-cookie"
 import { createAction } from "redux-actions";
 // 전역 관리(db 서버와 연결)를 위한 instance import
 import instance from "../../shared/api";
+
+const cookies = new Cookies();
 
 // Actions
 const LOG_IN = "member/LOG_IN";
@@ -35,6 +38,14 @@ export const Logout = () => {
 export const LoginSns = (token) => {
     return { type: LOG_IN, token };
 };
+
+export const setCookie = (name: String, value: String, option?: any) => {
+    return cookies.set(name, value, {...option})
+}
+
+export const getCookie = (name: string) => {
+    return cookies.get(name)
+}
 
 // middlewares
 // 회원가입
