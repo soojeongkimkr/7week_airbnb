@@ -5,20 +5,31 @@ import {Link} from 'react-router-dom'
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
 import startHosting from '../img/starthosting.png'
 
+import {useDispatch, useSelector} from 'react-redux'
+import { getCategoriesDB } from "../redux/modules/categories";
 
 
 
-const SetHosting = (props) => {
-  console.log(props.param)
+
+
+const SetHosting = () => {
+
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+      dispatch(getCategoriesDB());
+  }, []);
+
+  const categories = useSelector((state) => state.categories.posts);
+  console.log(categories)
+
+  const [option, setOption] = React.useState([]);
+
+  console.log(option)
   
 
-  const [option, setOption] = React.useState('apt');
-
-   // 레이아웃 버튼 선택
-   const isChecked = (e) => {
-    if (e.target.checked){
-      setOption(e.target.value)
-    }
+  const oneStepDone=()=>{
+    localStorage.setItem('category', JSON.stringify(option))
   }
   
 
@@ -40,50 +51,47 @@ const SetHosting = (props) => {
 
 
       <div className='select'>
-        {/* 카테고리 옵션들 */}
-        <div className='options'>
-
-        {/* 데이터 가져와서 맵돌리기 */}
-        <div className='option island'
-        style={option === 'island' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-          <input type="radio" value="island" id="island" name="option"
-          onChange={isChecked}
-          style={{display:'none'}}
-          />
-          <label htmlFor='island'>
-            <div>섬</div>
-          </label>
+        <div className='contents'>
+          {/* 카테고리 옵션들 */}
+          <div className='options'>
+          {/* 데이터 가져와서 맵돌리기 */}
+          {categories && categories.map((l,i)=> {
+                return(
+            <div className='option' key={i}
+            style={option.includes(l.id) ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
+            <input type="checkbox" value={l.category} id={l.category} name="option"
+            onChange={(e)=>{
+              if (e.target.checked){
+              setOption((pre)=>{
+                const newData=[...pre];
+                newData.push(l.id)
+                return newData
+              })
+              console.log(e.target.checked)
+               }else{
+                console.log(e.target.checked)
+                setOption((pre)=>{
+                  const newData = pre.filter((v,i)=>{
+                    return l.id !== v
+                    })
+                    return newData
+                })
+               }
+              }}
+            style={{display:'none'}}
+            />
+            <label htmlFor={categories[i].category}>
+              <div>{categories[i].category}</div>
+            </label>
+            </div>
+            )
+          })}
+          {/* ------------- 리스트 ----------------*/}
         </div>
+      </div> 
 
-        <div className='option park'
-        style={option === 'park' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-        > 
-          <input type="radio" value="park"  id="park" name="option"
-          onChange={isChecked}
-          style={{display:'none'}}
-          />
-          <label htmlFor='park'>
-            <div>국립공원</div>
-          </label>
-        </div>
-
-        <div className='option wood'
-        style={option === 'wood' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-        > 
-          <input type="radio" value="wood"  id="wood" name="option"
-          onChange={isChecked}
-          style={{display:'none'}}
-          />
-          <label htmlFor='wood'>
-            <div>통나무집</div>
-          </label>
-        </div>
-
-        {/* ------------- 리스트들 */}
-        </div> 
-
-        <Link to={`/host/post/${props.param}/2private`} >
-          <button>다음</button>
+        <Link to={`/host/post/2private`} >
+          <button onClick={oneStepDone}>다음</button>
         </Link>
       </div>
 
@@ -152,6 +160,7 @@ const SetHostingWrap = styled.div`
           overflow-y: scroll;
           height:80%;
           padding: 0 30px;
+          border-bottom:1px solid #ddd;
           
         } 
 
@@ -166,32 +175,26 @@ const SetHostingWrap = styled.div`
           animation: fadein 1s ease-in-out;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr 1fr;
-          justify-content: center;
-          align-items: center;
-          margin-left: 15vw;
-          margin-right: 15vw; 
+          margin-top : 10px;
+          margin-left: 2vw;
+          margin-right: 5vw; 
           
           .option{
             display:flex;
-            justify-content: center;
-            align-items: center;
-            width: 5vw;
-            height: 7vh;
+            width: auto;
             border: 2px solid #ddd;
             border-radius: 10px;
             font-size: 18px;
-            padding : 20px;
             margin: 10px;
-            margin-bottom: 12px; 
+            
 
             label{
               display:flex;
-              /* flex-direction: column; */
+              justify-content: center;
               justify-content: center;
               flex-grow:1;
-              width: 7vw;
-              height: 7vh;
-              padding: 20px;
+              padding: 1em;
+              
 
               div{
               display:flex;
@@ -200,8 +203,6 @@ const SetHostingWrap = styled.div`
               
             }
             }
-            
-            
           }
         }
 

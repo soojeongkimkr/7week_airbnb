@@ -6,7 +6,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
 
 
-const SetHosting6 = (props) => {
+const SetHosting6 = () => {
   const fileInput1 = useRef(null);
   const fileInput2 = useRef(null);
   const fileInput3 = useRef(null);
@@ -94,6 +94,30 @@ const SetHosting6 = (props) => {
   };
 
 
+  // 이미지 모두 담아서 전송
+  const sixStepDone = () => {
+
+    // 메인 이미지
+    const _file = fileInput1.current.files[0];
+    const _file2 = fileInput2.current.files[0];
+    const _file3 = fileInput3.current.files[0];
+    const _file4 = fileInput4.current.files[0];
+    const _file5 = fileInput5.current.files[0];
+    console.log(_file);
+
+    const formData = new FormData();
+    const _formData = new FormData();
+
+    formData.append("mainImage", _file);
+    _formData.append("images", {_file2, _file3, _file4, _file5});
+
+    localStorage.setItem('mainImage', JSON.stringify(formData))
+    localStorage.setItem('images', JSON.stringify(_formData))
+    localStorage.setItem('main',JSON.stringify(attachment1))
+
+};
+
+
   return (
     <SetHostingWrap>
       <div className='movie'>
@@ -119,53 +143,7 @@ const SetHosting6 = (props) => {
           어때요? 사진이 마음에 드시나요?
         </div>
         <div className='options'>
-          {/* <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="apt" id="apt" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='apt'>
-              
-              <div className='pic'>
-              
-              </div>
-              <div>아파트</div>
-            </label>
-          </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="house" name="option" id="house"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='house'>
-              
-              <div className='pic'>
-
-              </div>
-              <div>주택</div>
-            </label>
-          </div>
-
-          <div className='option hotel'
-          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="hotel" name="option" id="hotel"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='hotel'>
-              
-              <div className='pic'>
-
-              </div>
-              <div>호텔</div>
-            </label>
-          </div> */}
-
-        {/* 데이터 가져와서 맵돌리기 */}
+          
         {/* 1번째 사진 */}
         <div className='option hotel'> 
 
@@ -284,7 +262,7 @@ const SetHosting6 = (props) => {
 
         <label style={{position:'relative'}}>
           <div style=
-          {attachment2 ? {
+          {attachment3 ? {
           display:'none'
           }
           :
@@ -342,7 +320,7 @@ const SetHosting6 = (props) => {
 
         <label style={{position:'relative'}}>
           <div style=
-          {attachment2 ? {
+          {attachment4 ? {
           display:'none'
           }
           :
@@ -399,7 +377,7 @@ const SetHosting6 = (props) => {
 
           <label style={{position:'relative'}}>
           <div style=
-          {attachment2 ? {
+          {attachment5 ? {
           display:'none'
           }
           :
@@ -454,11 +432,11 @@ const SetHosting6 = (props) => {
 
             {/* 버튼 */}
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/5facility`}>
+          <Link to={`/host/post/5facility`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/host/post/${props.param}/7title`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/host/post/7title`}>
+            <button className='nextBtn' onClick={sixStepDone}>다음</button>
           </Link>
         </div>
       </div>

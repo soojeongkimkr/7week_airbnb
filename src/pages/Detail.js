@@ -1,4 +1,5 @@
 import React from "react";
+import {useDispatch} from 'react-redux'
 
 import detail from '../css/detail.css'
 
@@ -9,9 +10,20 @@ import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded
 import Header from '../components/Header';
 import Footer from "../components/Footer";
 
+import {getPostDB} from '../redux/modules/post'
+
+
+
 
 
 const Detail = () => {
+  const dispatch = useDispatch();
+
+  React.useEffect(()=>{
+    dispatch(getPostDB());
+  },[])
+
+  
   return (
     <>
     <Header/>

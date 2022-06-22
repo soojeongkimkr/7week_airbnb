@@ -1,22 +1,19 @@
-import React from 'react';
+import React,{useRef} from 'react';
 import styled, {css} from "styled-components";
 import {Link} from 'react-router-dom'
 
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
-import startHosting from '../img/starthosting.png'
 
 
-const SetHosting8 = (props) => {
-  const [option, setOption] = React.useState('apt');
 
-   // 레이아웃 버튼 선택
-   const isChecked = (e) => {
-    if (e.target.checked){
-      setOption(e.target.value)
-    }
+const SetHosting8 = () => {
+
+   const description = useRef();
+  //  console.log(description.current.value)
+
+  const eightStepDone = () => {
+    localStorage.setItem('description', JSON.stringify(description.current.value))
   }
-  
-
 
   return (
     <SetHostingWrap>
@@ -42,15 +39,15 @@ const SetHosting8 = (props) => {
             숙소 설명 작성하기
         </div>
         <div className='address'>
-          <textarea type="text" defaultValue='편안함을 자랑하는 이곳에서 즐거운 시간을 보내실 수 있을 것입니다.'/>
+          <textarea type="text" defaultValue='편안함을 자랑하는 이곳에서 즐거운 시간을 보내실 수 있을 것입니다.' ref={description}/>
         </div>
 
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/7title`}>
+          <Link to={`/host/post/7title`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/host/post/${props.param}/9price`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/host/post/9price`}>
+            <button className='nextBtn' onClick={eightStepDone}>다음</button>
           </Link>
         </div>
       </div>

@@ -9,8 +9,8 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 
 
 
-const SetHosting9 = (props) => {
-  const [priceCount, setPriceCount] = React.useState(10000);
+const SetHosting9 = () => {
+  const [priceCount, setPriceCount] = React.useState(80000);
   const [servicePriceCount, setServicePriceCount] = React.useState(10000);
   const [cleanPriceCount, setCleanPriceCount] = React.useState(10000);
   
@@ -38,6 +38,12 @@ const SetHosting9 = (props) => {
   const cleanPriceMinus = () => {
     if(cleanPriceCount > 10000)
     setCleanPriceCount( cleanPriceCount - 5000 )
+  }
+
+  const nineStepDone = () => {
+    localStorage.setItem('defaultPrice', JSON.stringify(priceCount))
+    localStorage.setItem('cleanPrice', JSON.stringify(cleanPriceCount))
+    localStorage.setItem('servicePrice', JSON.stringify(servicePriceCount))
   }
 
  
@@ -107,7 +113,7 @@ const SetHosting9 = (props) => {
         </div>
 
         {/* 서비스비 */}
-        <div className='serviceprice' style={{marginTop:'30px'}}>서비스비</div>
+        <div className='serviceprice' style={{marginTop:'30px', marginBottom:'-5px'}}>서비스비</div>
         <div className='price'>
         <RemoveCircleOutlineIcon onClick={servicePriceMinus}
           style={servicePriceCount === 10000 ? {marginRight:'25px', color:'#ddd', fontSize: '35px'}: {marginRight:'25px', color:'#717171', fontSize: '35px'}}
@@ -127,11 +133,11 @@ const SetHosting9 = (props) => {
       
 
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/8description`}>
+          <Link to={`/host/post/8description`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/host/post/${props.param}/10check`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/host/post/10check`}>
+            <button className='nextBtn' onClick={nineStepDone}>다음</button>
           </Link>
         </div>
       </div>
@@ -225,7 +231,7 @@ const SetHostingWrap = styled.div`
 
           .option{
             display:flex;
-            width: 10vw;
+            width: 15vw;
             height: 90px;
             border: 1px solid #999;
             border-radius: 20px;

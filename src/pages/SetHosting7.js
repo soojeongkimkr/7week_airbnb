@@ -1,21 +1,18 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import styled, {css} from "styled-components";
 import {Link} from 'react-router-dom'
 
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
-import startHosting from '../img/starthosting.png'
 
 
-const SetHosting7 = (props) => {
-  const [option, setOption] = React.useState('apt');
-
-   // 레이아웃 버튼 선택
-   const isChecked = (e) => {
-    if (e.target.checked){
-      setOption(e.target.value)
-    }
-  }
+const SetHosting7 = () => {
+ const title = useRef();
+//  console.log(title.current.value)
+   
   
+ const sevenStepDone = () => {
+  localStorage.setItem('title', JSON.stringify(title.current.value))
+ }
 
 
   return (
@@ -42,16 +39,16 @@ const SetHosting7 = (props) => {
             숙소 이름 정하기
         </div>
         <div className='address'>
-          <textarea type="text" defaultValue='아름다운 아파트'/>
+          <textarea type="text" defaultValue='아름다운 아파트' ref={title}/>
         </div>
         
 
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/6pics`}>
+          <Link to={`/host/post/6pics`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/host/post/${props.param}/8description`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/host/post/8description`}>
+            <button className='nextBtn' onClick={sevenStepDone}>다음</button>
           </Link>
         </div>
 

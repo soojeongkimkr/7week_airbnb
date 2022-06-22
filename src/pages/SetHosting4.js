@@ -9,8 +9,7 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 
-const SetHosting4 = (props) => {
-  const [option, setOption] = React.useState('apt');
+const SetHosting4 = () => {
 
   const [guestCount, setGuestCount] = React.useState(1);
   const [bedCount, setBedCount] = React.useState(1);
@@ -51,13 +50,15 @@ const SetHosting4 = (props) => {
   }
 
 
-
-   // 레이아웃 버튼 선택
-   const isChecked = (e) => {
-    if (e.target.checked){
-      setOption(e.target.value)
-    }
+  const fourStepDone = () => {
+    localStorage.setItem('maxGuest', JSON.stringify(guestCount))
+    localStorage.setItem('bedCount', JSON.stringify(bedCount))
+    localStorage.setItem('bedRoomCount', JSON.stringify(bedroomCount))
+    localStorage.setItem('bathRoomCount', JSON.stringify(bathCount))
   }
+  // const goToBack = () => {
+  //   localStorage.removeItem('address')
+  // }
   
   
 
@@ -79,10 +80,6 @@ const SetHosting4 = (props) => {
       <div className='select'>
         <div className='options'>
           <div className='option apt'>
-            <input type="radio" value="apt" id="apt" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
             <label htmlFor='apt'>
               <div className = 'title'>게스트</div>
               <div className='pic'>
@@ -99,10 +96,6 @@ const SetHosting4 = (props) => {
             </label>
           </div>
           <div className='option house'> 
-            <input type="radio" value="house" name="option" id="house"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
             <label htmlFor='house'>
             <div className= 'title'>침대</div>
               <div className='pic'>
@@ -117,10 +110,6 @@ const SetHosting4 = (props) => {
             </label>
           </div>
           <div className='option hotel'> 
-            <input type="radio" value="hotel" name="option" id="hotel"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
             <label htmlFor='hotel'>
             <div className= 'title'>침실</div>
               <div className='pic'>
@@ -135,10 +124,6 @@ const SetHosting4 = (props) => {
             </label>
           </div>
           <div className='option hotel'> 
-            <input type="radio" value="hotel" name="option" id="hotel"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
             <label htmlFor='hotel'>
             <div className= 'title'>욕실</div>
               <div className='pic'>
@@ -155,11 +140,11 @@ const SetHosting4 = (props) => {
         </div>
 
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/3location`}>
+          <Link to={`/host/post/3location`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/host/post/${props.param}/5facility`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/host/post/5facility`}>
+            <button className='nextBtn' onClick={fourStepDone}>다음</button>
           </Link>
         </div>
       </div>

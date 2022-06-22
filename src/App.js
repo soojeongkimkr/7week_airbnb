@@ -22,9 +22,11 @@ import SetHosting7 from "./pages/SetHosting7"
 import SetHosting8 from "./pages/SetHosting8"
 import SetHosting9 from "./pages/SetHosting9"
 import SetHosting10 from "./pages/SetHosting10"
+import { useParams } from "react-router-dom";
 
 function App() {
-  
+  const param = useParams().id;
+
 
   return (
     <ThemeProvider theme = {theme}>
@@ -32,19 +34,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Main/>}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/hotel/:id" element={<Detail/>}></Route>
+          <Route path="/hotel/:id" element={<Detail param={param}/>}></Route>
           <Route path='/startHosting' element={<StartHosting/>}></Route>
           <Route path="/host" element={<HostPage/>}></Route>
-          <Route path="/host/post/:id/1property" element={<SetHosting/>}></Route>
-          <Route path="/host/post/:id/2private" element={<SetHosting2/>}></Route>
-          <Route path="/host/post/:id/3location" element={<SetHosting3/>}></Route>
-          <Route path="/host/post/:id/4numbers" element={<SetHosting4/>}></Route>
-          <Route path="/host/post/:id/5facility" element={<SetHosting5/>}></Route>
-          <Route path="/host/post/:id/6pics" element={<SetHosting6/>}></Route>
-          <Route path="/host/post/:id/7title" element={<SetHosting7/>}></Route>
-          <Route path="/host/post/:id/8description" element={<SetHosting8/>}></Route>
-          <Route path="/host/post/:id/9price" element={<SetHosting9/>}></Route>
-          <Route path="/host/post/:id/10check" element={<SetHosting10/>}></Route>
+          <Route path="/host/post/1property" element={<SetHosting/>} ></Route>
+          <Route path="/host/post/2private" element={<SetHosting2/>}></Route>
+          <Route path="/host/post/3location" element={<SetHosting3/>}></Route>
+          <Route path="/host/post/4numbers" element={<SetHosting4/>}></Route>
+          <Route path="/host/post/5facility" element={<SetHosting5/>}></Route>
+          <Route path="/host/post/6pics" element={<SetHosting6 />}></Route>
+          <Route path="/host/post/7title" element={<SetHosting7/>}></Route>
+          <Route path="/host/post/8description" element={<SetHosting8/>}></Route>
+          <Route path="/host/post/9price" element={<SetHosting9/>}></Route>
+          <Route path="/host/post/10check" element={<SetHosting10/>}></Route>
         
         </Routes>
       </div>

@@ -6,8 +6,8 @@ import airbnblogo_ws from '../img/airbnblogo_ws.png'
 import startHosting from '../img/starthosting.png'
 
 
-const SetHosting2 = (props) => {
-  const [option, setOption] = React.useState('apt');
+const SetHosting2 = () => {
+  const [option, setOption] = React.useState(1);
   
 
    // 레이아웃 버튼 선택
@@ -15,6 +15,10 @@ const SetHosting2 = (props) => {
     if (e.target.checked){
       setOption(e.target.value)
     }
+  }
+
+  const twoStepDone = () => {
+    localStorage.setItem('type', JSON.stringify(option))
   }
   
 
@@ -35,9 +39,9 @@ const SetHosting2 = (props) => {
       </div>
       <div className='select'>
         <div className='options'>
-          <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="apt" id="apt" name="option"
+          <div className='option'
+          style={option === '1' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
+            <input type="radio" value= '1' id="apt" name="option"
             onChange={isChecked}
             style={{display:'none'}}
             />
@@ -45,10 +49,10 @@ const SetHosting2 = (props) => {
               <div>공간 전체</div>
             </label>
           </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          <div className='option'
+          style={option === '2' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
-            <input type="radio" value="house" name="option" id="house"
+            <input type="radio" value="2" name="option" id="house"
             onChange={isChecked}
             style={{display:'none'}}
             />
@@ -56,10 +60,10 @@ const SetHosting2 = (props) => {
               <div>개인실</div>
             </label>
           </div>
-          <div className='option hotel'
-          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          <div className='option'
+          style={option === '3' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
-            <input type="radio" value="hotel" name="option" id="hotel"
+            <input type="radio" value="3" name="option" id="hotel"
             onChange={isChecked}
             style={{display:'none'}}
             />
@@ -70,11 +74,11 @@ const SetHosting2 = (props) => {
         </div>
 
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/1property`}>
+          <Link to={`/host/post/1property`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/host/post/${props.param}/3location`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/host/post/3location`}>
+            <button onClick={twoStepDone} className='nextBtn'>다음</button>
           </Link>
         </div>
       </div>

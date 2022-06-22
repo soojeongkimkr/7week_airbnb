@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useRef} from 'react';
 import styled, {css} from "styled-components";
 import {Link} from 'react-router-dom'
 
@@ -6,14 +6,13 @@ import airbnblogo_ws from '../img/airbnblogo_ws.png'
 import startHosting from '../img/starthosting.png'
 
 
-const SetHosting3 = (props) => {
-  const [option, setOption] = React.useState('island');
+const SetHosting3 = () => {
 
-   // 레이아웃 버튼 선택
-   const isChecked = (e) => {
-    if (e.target.checked){
-      setOption(e.target.value)
-    }
+  const address = useRef()
+  // console.log(address.current.value)
+
+  const threeStepDone = () => {
+    localStorage.setItem('address', JSON.stringify(address.current.value))
   }
   
   
@@ -37,18 +36,18 @@ const SetHosting3 = (props) => {
       {/* 우측 화면 */}
       <div className='select'>
           <div className='address'>
-            <input type="text" placeholder='주소를 입력하세요.'>
+            <input type="text" placeholder='주소를 입력하세요.' ref={address}>
             </input>
         </div>
 
 
         {/* 버튼 */}
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/2private`}>
+          <Link to={`/host/post/2private`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/host/post/${props.param}/4numbers`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/host/post/4numbers`}>
+            <button className='nextBtn' onClick={threeStepDone}>다음</button>
           </Link>
         </div>
       </div>
