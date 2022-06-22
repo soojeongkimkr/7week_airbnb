@@ -1,9 +1,13 @@
 import axios from "axios";
 
 const GET = "categories/GET"
+const GETLIST = "categories/GETLIST"
 
 export function getCategories(categories){
   return {type: GET, categories }
+}
+export function getCategory(category){
+  return {type: GETLIST, category }
 }
 
 
@@ -26,6 +30,21 @@ export const getCategoriesDB = () => async (dispatch) => {
   }
 };
 
+export const getCategoryDB = () => async (dispatch) => {
+  try {
+    const data = await axios.get("http://idontcare.shop/hotels",{
+      params:{
+        category: 1
+      }
+    });
+    dispatch(getCategories(data.data));
+    console.log(data.data);
+  } catch (error) {
+    alert("오류가 발생했습니다. 다시 시도해주세요.");
+    console.log(error);
+  }
+};
+
 
 //reducer
 
@@ -34,6 +53,9 @@ export default function reducer(state = initialState, action={}){
     
     case "categories/GET":{
       return {posts: action.categories}
+    }
+    case "categories/GETLIST":{
+      return {posts: action.category}
     }
     // case "post/ADD":{
     //   const new_post_list = [ action.post_list, ...state.posts];
