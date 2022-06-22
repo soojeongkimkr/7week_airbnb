@@ -1,9 +1,13 @@
 import React from "react";
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
+import {useDispatch, useSelector} from 'react-redux'
+import {getCategoriesDB} from '../redux/modules/categories'
+import {getPostListDB} from '../redux/modules/post'
 
 const Category = () => {
   function SampleNextArrow(props) {
@@ -11,7 +15,7 @@ const Category = () => {
     return (
       <div
         className={className}
-        style={{ ...style, display: "block", background: "black", borderRadius: "50%", opacity: "1" }}
+        style={{ ...style, display: "none", background: "black", borderRadius: "50%", opacity: "1" }}
         onClick={onClick}
       />
     );
@@ -22,7 +26,7 @@ const Category = () => {
     return (
       <div
         className={className}
-        style={{ ...style, display: "block", background: "green" }}
+        style={{ ...style, display: "none", background: "black", borderRadius: "50%", opacity: "1" }}
         onClick={onClick}
       />
     );
@@ -38,35 +42,139 @@ const Category = () => {
     prevArrow: <SamplePrevArrow />
   };
 
+
+  const dispatch = useDispatch();
+  const [option, setOption] = React.useState();
+
+  React.useEffect(()=>{
+    dispatch(getCategoriesDB())
+  },[]);
+
+  const categories = useSelector(state => state.categories.posts)
+  // console.log(categories)
+
+  // 카테고리별 목록 불러오기
+  const category = useSelector(state => state.post.posts)
+
+
   return (
-    <Wrap className="categorySlider">
+    <Wrap>
       <Slider {...settings}>
-        <p>섬</p>
-        <p>국립공원</p>
-        <p>통나무집</p>
-        <p>기상천외한 숙소</p>
-        <p>해변 근처</p>
-        <p>초소형 주택</p>
-        <p>디자인</p>
-        <p>캠핑장</p>
-        <p>A자형 주택</p>
-        <p>호숫가</p>
-        <p>북극</p>
-        <p>멋진 수영장</p>
-        <p>동굴</p>
-        <p>서핑</p>
-        <p>최고의 전망</p>
-        <p>복토 주택</p>
-        <p>열대 지역</p>
-        <p>셰어하우스</p>
-        <p>Luxe</p>
+        {categories&&categories.map((v,i)=>{
+          return(
+            <div className="categories" key={i} onClick={()=>{
+                setOption(i)
+                dispatch(getPostListDB(i))
+                }
+              } >
+              <div>{v.category}</div>
+            </div>
+          )
+        })}
+        
       </Slider>
+
+      <div className="cardWrap">
+        {category&&category.map((v,i)=>{
+          return(
+            <div className="content">
+            <div className="card" style={{backgroundImage:`url(${v.mainImage})`, backgroundPosition:'center'}}>
+            </div>
+            <div className="txt">
+              <div className="titleWrap">
+                <div className="region">
+                  {v.title}
+                </div>
+                <div className="new">
+                  NEW
+                </div>
+                </div>
+                <div className="priceWrap">
+                  <div className="price">
+                    ₩{v.price} /박
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+        
+
+        
+        
+      </div>
+      {/* <div className="content">
+          <div className="card">
+          </div>
+          <div className="txt">
+            <div className="titleWrap">
+              <div className="region">
+                제주도
+              </div>
+              <div className="new">
+                NEW
+              </div>
+            </div>
+            <div className="priceWrap">
+              <div className="price">
+                ₩120000 /박
+              </div>
+            </div>
+          </div>
+        </div> */}
     </Wrap>
   );
 };
 
 const Wrap = styled.div`
+ margin-top:20px;
 
+ .categories{
+   font-size: 14px;
+   
+   div{
+     width: auto;
+     height:30px;
+     text-align:center;
+     display:flex;
+     justify-content:center;
+     align-items:center;
+   }
+ }
+
+ .cardWrap{
+   margin-top: 30px;
+   display: flex;
+   justify-content:space-between;
+   flex-wrap: wrap;
+ }
+ .content{
+   width: 19%;
+   display:flex;
+   flex-direction:column;
+   margin-right:10px;
+ }
+ .card{
+   background:blue;
+   height: 200px;
+   border-radius: 20px;
+   margin: 0 auto;
+ }
+ .txt{
+   width: 90%;
+   height: 100px;
+   border-radius: 20px;
+   margin: 0 auto;
+ }
+ .titleWrap{
+   display:flex;
+   justify-content:space-between;
+   margin-top: 10px;
+ }
+ .priceWrap{
+   text-align:left;
+   margin-top: 5px;
+ }
 `
 
 export default Category;

@@ -2,7 +2,7 @@ import React from "react";
 import Login from "../components/Login";
 import Category from "../components/Category";
 import Card from "../components/Card";
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
@@ -64,18 +64,20 @@ const Main = () => {
           <Login open={modalOpen} close={closeModal} header="로그인 또는 회원 가입">
           </Login>
         </React.Fragment> */}
+        <div className="inner">
         <Category />
         
-        <button onClick={removeCookie}>
+        {/* <button onClick={removeCookie}>
           로그아웃
-        </button>
+        </button> */}
 
-        <div className="cardBox">
+        {/* <div className="cardBox">
           {post_list.map((list, idx) => {
             return (
               <Card key={idx} data={list} />
             )
           })}
+        </div> */}
         </div>
       </Wrap>
       <Footer />
@@ -84,16 +86,16 @@ const Main = () => {
 };
 
 const Wrap = styled.div`
-// padding:80px 40px 0;
+/* padding:80px 40px 0; */
 padding:180px 40px 0;
 
 @media screen and (max-width: 1130px) {
-  // padding:80px 10px 0;
+  /* padding:80px 10px 0; */
   padding:180px 10px 0;
 }
 
 @media screen and (max-width: 950px) {
-  // padding:80px 0 0;
+  /* padding:80px 0 0; */
   padding:180px 0 0;
 }
 `
