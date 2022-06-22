@@ -55,7 +55,6 @@ const Login = (props) => {
           <main>
             {props.children}
             <p>에어비앤비에 오신 것을 환영합니다.</p>
-            {/* 로그인 */}
             <Form>
               <Input type="text" required placeholder="이메일(회원가입)" name="email" value={userEmail} onChange={onChange}/>
               <Input type="password" required placeholder="비밀번호(회원가입)" name="password" value={password} onChange={onChange}/>

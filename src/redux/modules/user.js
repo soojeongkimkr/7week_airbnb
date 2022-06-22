@@ -107,11 +107,23 @@ export const signupDB = (email, password) => {
 // };
 
 // sns 로그인
-export const loginSns = (email, password) => {
-    return async function (dispatch, getState) {
-        localStorage.setItem("email", email);
-    };
-};
+// export const loginSns = (email, password) => {
+//     return async function (dispatch, getState) {
+//         localStorage.setItem("email", email);
+//     };
+// };
+
+export const setCookie = (name, value, option) => {
+    const cookies = new Cookies();
+    console.log('쿠키값 받아오기');
+    // return cookies.set(name, value, { ...option });
+    return cookies.set(name, value, {path: "/"});
+    // navigate('/');
+}
+
+export const getCookie = (name) => {
+    return cookies.get(name);
+}
 
 // 로그아웃
 // export const LogoutFB = () => {
@@ -124,7 +136,7 @@ export const loginSns = (email, password) => {
 
 // 토큰 해독
 // export const loginCheckFB = () => {
-    // return function (dispatch, getState, { history }) {
+// return function (dispatch, getState, { history }) {
 // };
 
 // Reducer
