@@ -1,0 +1,355 @@
+.inner{
+  position: relative;
+  width: 1280px;
+  margin: 0 auto;
+}
+.inner .title{
+  margin-top: 200px;
+  width: 100%;
+  height: 86px;
+  font-size: 26px;
+  display:flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.inner .title .name{
+  margin-right:auto;
+  font-size: 26px;
+  font-weight: 600;
+}
+.inner .title .share{
+  font-size: 14px;
+  display:flex;
+  align-items: center;
+}
+
+.inner .title .save{
+  display:flex;
+  align-items: center;
+  font-size: 14px;
+  margin-left: 30px;
+}
+
+/* 숙소 이미지 갤러리 */
+.imgs{
+  width: 100%;
+  height: 560px;
+  display:grid;
+  row-gap: 10px;
+  column-gap: 10px;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 10fr 10fr 1fr;
+}
+.imgs .img1{
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
+  grid-column: 1 / 2;
+	grid-row: 1 / 3;
+  overflow: hidden;
+  background-image: url('https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/f62e1b1a-d6af-438b-82ce-95c51a4e0ca1.jpeg?im_w=1200');
+  background-position: center;
+  background-size: cover;
+}
+.imgs .img2{
+  overflow: hidden;
+  background-image: url('https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/604ecd1b-87c4-4bc9-a976-4ba281a09ee5.jpeg?im_w=720');
+  background-position: top;
+  background-size: cover;
+}
+.imgs .img3{
+  overflow: hidden;
+  border-top-right-radius:30px;
+  background-image: url('https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/a380d857-f48a-42fa-aa8c-dc817c37a885.jpeg?im_w=1200');
+  background-size: cover;
+}
+.imgs .img4{
+  overflow: hidden;
+  background-image: url('https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/2039c695-7161-43b9-be49-d311eaac0d70.jpeg?im_w=1200');
+  background-position: center;
+  background-size: cover;
+  
+}
+.imgs .img5{
+  overflow: hidden;
+  border-bottom-right-radius: 30px;
+  background-image: url('https://a0.muscache.com/im/pictures/prohost-api/Hosting-48729525/original/eb2e23ba-5c35-472c-9632-06ae767b401e.jpeg?im_w=720');
+  background-position: center;
+  background-size: cover;
+}
+
+
+
+
+.wraper{
+  display:flex;
+}
+
+/* 숙소 수용 인원 */
+
+.numberWrap{
+  margin-top: 10px;
+  margin-bottom: 28px;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+.numberWrap .introTitleWrap {
+  text-align: left;
+}
+.numberWrap .introTitle{
+  font-weight: 600;
+  font-size:22px;
+  margin-bottom:10px;
+}
+.numberWrap .introTitleWrap .nums{
+  font-size:16px;
+}
+
+.numberWrap .profilePic{
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  background: #fff;
+
+}
+
+/* 에어커버 */
+.airCover{
+  font-size: 16px;
+  width: 70%;
+  text-align: left;
+}
+.coverTxt{
+  padding-top: 40px;
+}
+.more{
+  padding: 20px 0;
+}
+
+
+
+/* 숙소 설명 */
+.detailTxt{
+  font-size: 16px;
+  line-height:24px;
+  margin-top: 32px;
+  margin-bottom: 20px;
+  width: 70%;
+  text-align: left;
+}
+
+
+/* 숙소 장소 방 개수 */
+.rooms{
+  padding-top: 48px;
+  padding-bottom: 35px;
+  width: 60%;
+  text-align: left;
+}
+.rooms .roomsTitle{
+  font-size:22px;
+  margin-bottom:24px;
+}
+.rooms .card{
+  padding:24px;
+  border: 1px solid #ccc;
+  width: 120px;
+  
+  border-radius: 15px;
+}
+.rooms .card .icon{
+  width: 24px;
+  height: 24px;
+  margin-bottom: 15px;
+  margin-top: 3px;
+}
+.rooms .card .roomType{
+  font-size: 16px;
+}
+
+
+/* 숙소 편의 시설 */
+.facility{
+  padding: 48px 0;
+  width: 50%;
+  text-align: left;
+}
+.facilityTitle{
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+.facilityLists{
+  font-size: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+  row-gap: 10px;
+}
+.facilityLists div{
+  
+  
+}
+
+
+/* 체크인 아웃 달력 */
+.calendar{
+  width: 50%;
+  
+}
+.calendar .calendarTitle{
+  font-size: 22px;
+  text-align: left;
+}
+.calendar .calendarTitle .resetDay{
+  font-size:14px;
+}
+
+hr{
+  opacity: 0.3;
+  width: 70%;
+  float:left;
+}
+
+
+
+
+/* 예약하기 창 */
+.reservation{
+  margin-top: 10px;
+  width: 50vw;
+  height: 530px;
+  border-radius: 20px;
+  border:1px solid #ddd;
+  box-shadow: 2px 5px 35px rgba(100, 100, 100, 0.2);
+}
+.reservation .wrap{
+  padding: 35px 30px;
+}
+.reservation .wrap .perdayprice{
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.reservation .wrap .perdayprice>div:nth-of-type(1){
+  font-size: 22px;
+  font-weight: 600;
+}
+.reservation .wrap .select{
+  width: 370px;
+  height: 112px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+
+}
+.reservation .wrap .select .checkinout{
+  display:flex;
+  height: 56px;
+  border-bottom: 1px solid #ccc;
+  /* margin-bottom: 10px; */
+}
+.reservation .wrap .select .checkinout .checkin{
+  width: 160px;
+  border-right: 1px solid #ccc;
+  text-align: left;
+  margin-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+.reservation .wrap .select .checkinout .checkin div:nth-of-type(1){
+  font-size: 8px;
+  font-weight: 700;
+  padding-bottom: 3px;
+}
+.reservation .wrap .select .checkinout .checkin div:nth-of-type(2){
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+
+.reservation .wrap .select .checkinout .checkout{
+  width: 160px;
+  text-align: left;
+  margin-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+.reservation .wrap .select .checkinout .checkout div:nth-of-type(1){
+  font-size: 8px;
+  font-weight: 700;
+  padding-bottom: 3px;
+}
+.reservation .wrap .select .checkinout .checkout div:nth-of-type(2){
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+
+
+.reservation .wrap .select .peopleNum {
+  width: 320px;
+  text-align: left;
+  margin-left: 20px;
+  padding-top: 12px;
+  padding-bottom: 5px;
+  display:flex;
+  justify-content: space-between;
+  flex-grow:1;
+}
+.reservation .wrap .select .peopleNum div:nth-of-type(1){
+  display:flex;
+  flex-direction: column;
+}
+.reservation .wrap .select .peopleNum div:nth-of-type(1):nth-child(1){
+  font-size: 8px;
+  font-weight: 700;
+  padding-bottom: 3px;
+}
+.reservation .wrap .select .peopleNum div:nth-of-type(2){
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+
+
+
+
+.selectDone{
+  width: 370px;
+  height: 48px;
+  border: 1px solid transparent;
+  background: linear-gradient(to right, rgba(210,56,82), rgba(196,44,101));
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0;
+  color: #fff;
+  font-weight: 600;
+}
+.doneNotice{
+  font-size: 15px;
+}
+.detailprice{
+
+}
+.defaultprice{
+  display:flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.serviceprice{
+  display:flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.totalprice{
+  display:flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+
+
+
+

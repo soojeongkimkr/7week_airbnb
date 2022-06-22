@@ -89,7 +89,7 @@ const HeaderWrap = styled.div`
       background: #fff;  
       .inner{
         position:relative;
-        width: 1350px;
+        width: 1280px;
         margin: 0 auto;
         
       }

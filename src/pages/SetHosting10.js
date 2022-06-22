@@ -1,21 +1,75 @@
 import React from 'react';
 import styled, {css} from "styled-components";
 import {Link} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {addPostDB} from '../redux/modules/post'
 
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
 import startHosting from '../img/starthosting.png'
 
 
-const SetHosting10 = (props) => {
-  const [option, setOption] = React.useState('apt');
+const SetHosting10 = () => {
+  const dispatch = useDispatch();
 
-   // 레이아웃 버튼 선택
-   const isChecked = (e) => {
-    if (e.target.checked){
-      setOption(e.target.value)
+ const title =  JSON.parse(localStorage.getItem('title'));
+ const typeNum  =  JSON.parse(localStorage.getItem('type'));
+ const type = typeNum === 1 ? '공간 전체' : typeNum === 2 ? '개인실' : '다인실'
+
+ const maxGuest = JSON.parse(localStorage.getItem('maxGuest'));
+ const bedRoomCount = JSON.parse(localStorage.getItem('bedRoomCount'));
+ const bedCount = JSON.parse(localStorage.getItem('bedCount'));
+ const bathRoomCount = JSON.parse(localStorage.getItem('bathRoomCount'));
+ const description = JSON.parse(localStorage.getItem('description'));
+ const address = JSON.parse(localStorage.getItem('address'));
+ const mainImg = JSON.parse(localStorage.getItem('main'));
+
+
+ const onPostHandler = () => {
+  dispatch(addPostDB(
+    {
+      title: title,
+      address: address,
+      description: description,
+      type: parseInt(typeNum),
+      bedRoomCount: bedRoomCount,
+      bedCount: bedCount,
+      bathRoomCount: bathRoomCount,
+      facilities: JSON.parse(localStorage.getItem('facilities')),
+      category: JSON.parse(localStorage.getItem('category')),
+      mainImage: mainImg,
+      traffic: '',
+      region: '',
+      images: JSON.parse(localStorage.getItem('images')),
+      maxGuest: maxGuest,
+      minGuest: 1,
+      minDate: 1,
+      maxDate: 10,
+      defaultPrice: JSON.parse(localStorage.getItem('defaultPrice')),
+      cleanPrice: JSON.parse(localStorage.getItem('cleanPrice')),
+      servicePrice: JSON.parse(localStorage.getItem('servicePrice')),
+      checkInTime:'',
+      checkOutTime:'',
+      score : ''
     }
-  }
-  
+  ))
+
+  localStorage.removeItem('main')
+  localStorage.removeItem('cleanPrice')
+  localStorage.removeItem('facilities')
+  localStorage.removeItem('bedCount')
+  localStorage.removeItem('address')
+  localStorage.removeItem('description')
+  localStorage.removeItem('title')
+  localStorage.removeItem('images')
+  localStorage.removeItem('servicePrice')
+  localStorage.removeItem('category')
+  localStorage.removeItem('mainImage')
+  localStorage.removeItem('defaultPrice')
+  localStorage.removeItem('bedRoomCount')
+  localStorage.removeItem('type')
+  localStorage.removeItem('bathRoomCount')
+  localStorage.removeItem('maxGuest')
+ }
 
 
   return (
@@ -28,61 +82,37 @@ const SetHosting10 = (props) => {
         </Link>
         <div className="content">
           <div className='detail'>
-            호스팅할 숙소 유형을 알려주세요.
+            새로운 숙소 페이지를 확인하세요!
           </div>
         </div>
       </div>
-      <div className='select'>
-        <div className='options'>
-          <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="apt" id="apt" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='apt'>
-              <div>아파트</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/eadbcbdb-d57d-44d9-9a76-665a7a4d1cd7.jpg?im_w=240" alt="아파트"/>
-              </div>
-            </label>
-          </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="house" name="option" id="house"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='house'>
-              <div>주택</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/d1af74db-58eb-46bf-b3f5-e42b6c9892db.jpg?im_w=240" alt="주택"/>
-              </div>
-            </label>
-          </div>
-          <div className='option hotel'
-          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="hotel" name="option" id="hotel"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='hotel'>
-              <div>호텔</div>
-              <div className='pic'>
-                <img width="56px" height="56px" src="https://a0.muscache.com/im/pictures/a2c9ad21-b159-4fd2-b417-d810fb23c6a9.jpg?im_w=240" alt="호텔"/>
-              </div>
-            </label>
-          </div>
-        </div>
+      
 
+      {/* 우측페이지 */}
+      <div className='select'>
+        <div className='wraper'>
+            <div className='contents'>
+              <div className='pic' style={{backgroundImage :`url(${mainImg})`}}>
+                {/* <img src ={mainImg} alt="숙소 사진"/> */}
+              </div>
+              <div style={{fontSize:'26px', fontWeight:'700'}}>{title}</div>
+              <hr style={{width:'100%', opacity:'0.3', marginBottom:'30px'}}/>
+              <div><b>수정님이 호스팅하는 {type}</b></div>
+              <hr style={{ width:'100%', opacity:'0.3', marginBottom:'30px'}}/>
+              <div style={{fontSize:'16px'}}>최대 인원 {maxGuest}명 · 침실 {bedRoomCount}개 · 침대 {bedCount}개 · 욕실 {bathRoomCount}개</div>
+              <hr style={{width:'100%', opacity:'0.3', marginBottom:'30px'}}/>
+              <div style={{fontSize:'16px'}}>{description}</div>
+              <hr style={{width:'100%', opacity:'0.3', marginBottom:'30px'}}/>
+              <div style={{fontSize:'16px', fontWeight:'700'}}>위치</div>
+              <div style={{fontSize:'16px', fontWeight:'700'}}>{address}</div>
+            </div> 
+        </div>
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/9price`}>
+          <Link to={`/host/post/9price`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/hotel/${props.param}`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/`}>
+            <button className='nextBtn' onClick={onPostHandler}>다음</button>
           </Link>
         </div>
       </div>
@@ -106,14 +136,13 @@ const SetHostingWrap = styled.div`
         background-position: center;
 
         .logo{
-          margin: 30px;
+          margin-top: 3vh;
+          margin-left: 2vw;
           cursor: pointer;
         }
         .content{
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
           margin-top: 40vh;
 
           .detail{
@@ -121,7 +150,8 @@ const SetHostingWrap = styled.div`
           font-size: 48px;
           font-weight: 600;
           line-height: 70px;
-          
+          text-align:left;
+          margin-left: 2vw;
           }
           button{
             width: 180px;
@@ -146,47 +176,46 @@ const SetHostingWrap = styled.div`
         height: 100%;
         display: flex;
         justify-content: center;
+        align-items:center;
 
-        .options{
-          animation: fadein 1.5s ease-in-out;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        
-
-          .option{
-            display:flex;
-            width: 15vw;
-            height: 90px;
-            border: 2px solid #ddd;
-            border-radius: 20px;
+          .wraper{
+            animation: fadein 1s ease-in-out;
+            position: absolute;
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: 40px;
             font-size: 18px;
-            padding-left: 30px;
-            padding-right: 30px;
-            margin-bottom: 12px; 
-
-            label{
+            margin-bottom: 12px;
+            overflow: hidden;
+            /* width: 25vw; */
+            box-shadow: 2px 5px 55px rgba(100, 100, 100, 0.3);
+          }
+            .contents{
               display: flex;
-              justify-content: space-between;
-              flex-grow:1;
+              flex-direction: column;
+              margin: 30px;
+              border-radius: 30px;
             }
-            div{
-              display:flex;
-              justify-content:center;
-              align-items:center;
-            }
-            .pic{
 
-              img{
-                border-radius: 5px;
-              }
+            .pic{
+              border-radius: 25px;
+              overflow: hidden;
+              margin-bottom: 35px;
+              margin-left: 0px;
+              width: 100%;
+              height: 20vh;
+              background-position: center;
+            }
+
+            div{
+              text-align: left;
+              margin-right: 10px;
+              margin-bottom: 15px;
+              margin-left: 5px;
             }
           }
         }
-        .btns{
-          
-        }
+        
         .preBtn{
           position:absolute;
           bottom: 3vh;
@@ -216,7 +245,7 @@ const SetHostingWrap = styled.div`
           cursor:pointer;
 
         }
-      }
+      
       @keyframes fadein{
         0% {
           opacity: 0;
@@ -228,5 +257,6 @@ const SetHostingWrap = styled.div`
         }
 
     `
+    
   }}`
 export default SetHosting10;

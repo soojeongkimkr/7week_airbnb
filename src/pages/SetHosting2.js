@@ -6,14 +6,19 @@ import airbnblogo_ws from '../img/airbnblogo_ws.png'
 import startHosting from '../img/starthosting.png'
 
 
-const SetHosting2 = (props) => {
-  const [option, setOption] = React.useState('apt');
+const SetHosting2 = () => {
+  const [option, setOption] = React.useState(1);
+  
 
    // 레이아웃 버튼 선택
    const isChecked = (e) => {
     if (e.target.checked){
       setOption(e.target.value)
     }
+  }
+
+  const twoStepDone = () => {
+    localStorage.setItem('type', JSON.stringify(option))
   }
   
 
@@ -28,61 +33,52 @@ const SetHosting2 = (props) => {
         </Link>
         <div className="content">
           <div className='detail'>
-            호스팅할 숙소 유형을 알려주세요.
+            게스트가 머무르게 될 숙소의 종류가 무엇인가요?
           </div>
         </div>
       </div>
       <div className='select'>
         <div className='options'>
-          <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="apt" id="apt" name="option"
+          <div className='option'
+          style={option === '1' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
+            <input type="radio" value= '1' id="apt" name="option"
             onChange={isChecked}
             style={{display:'none'}}
             />
             <label htmlFor='apt'>
-              <div>아파트</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/eadbcbdb-d57d-44d9-9a76-665a7a4d1cd7.jpg?im_w=240" alt="아파트"/>
-              </div>
+              <div>공간 전체</div>
             </label>
           </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          <div className='option'
+          style={option === '2' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
-            <input type="radio" value="house" name="option" id="house"
+            <input type="radio" value="2" name="option" id="house"
             onChange={isChecked}
             style={{display:'none'}}
             />
             <label htmlFor='house'>
-              <div>주택</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/d1af74db-58eb-46bf-b3f5-e42b6c9892db.jpg?im_w=240" alt="주택"/>
-              </div>
+              <div>개인실</div>
             </label>
           </div>
-          <div className='option hotel'
-          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+          <div className='option'
+          style={option === '3' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
           > 
-            <input type="radio" value="hotel" name="option" id="hotel"
+            <input type="radio" value="3" name="option" id="hotel"
             onChange={isChecked}
             style={{display:'none'}}
             />
             <label htmlFor='hotel'>
-              <div>호텔</div>
-              <div className='pic'>
-                <img width="56px" height="56px" src="https://a0.muscache.com/im/pictures/a2c9ad21-b159-4fd2-b417-d810fb23c6a9.jpg?im_w=240" alt="호텔"/>
-              </div>
+              <div>다인실</div>
             </label>
           </div>
         </div>
 
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/1property`}>
+          <Link to={`/host/post/1property`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/host/post/${props.param}/3location`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/host/post/3location`}>
+            <button onClick={twoStepDone} className='nextBtn'>다음</button>
           </Link>
         </div>
       </div>
@@ -106,14 +102,13 @@ const SetHostingWrap = styled.div`
         background-position: center;
 
         .logo{
-          margin: 30px;
+          margin-top: 3vh;
+          margin-left: 2vw;
           cursor: pointer;
         }
         .content{
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
           margin-top: 40vh;
 
           .detail{
@@ -121,7 +116,8 @@ const SetHostingWrap = styled.div`
           font-size: 48px;
           font-weight: 600;
           line-height: 70px;
-          
+          text-align:left;
+          margin-left: 2vw;
           }
           button{
             width: 180px;
@@ -148,7 +144,7 @@ const SetHostingWrap = styled.div`
         justify-content: center;
 
         .options{
-          animation: fadein 1.5s ease-in-out;
+          animation: fadein 1s ease-in-out;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -176,18 +172,10 @@ const SetHostingWrap = styled.div`
               justify-content:center;
               align-items:center;
             }
-            .pic{
-
-              img{
-                border-radius: 5px;
-              }
-            }
+            
           }
         }
 
-        .btns{
-
-        }
         .preBtn{
           position:absolute;
           bottom: 3vh;

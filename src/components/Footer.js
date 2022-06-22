@@ -14,31 +14,31 @@ const Footer = () => {
       <div className="inner"
       style={{
           position:'relative',
-          width: '1350px',
+          width: '1280px',
           margin: '0 auto'
       }}>
       <Support>
         <SupportL>© 2022 Airbnb, Inc. ·
-          <A href="javascript:void(0);">개인정보 처리방침</A> ·
-          <A href="javascript:void(0);">이용약관</A> ·
-          <A href="javascript:void(0);">사이트맵</A> ·
-          <A href="javascript:void(0);">한국의 변경된 환불 정책</A> ·
-          <A href="javascript:void(0);">회사 세부정보</A>
+          개인정보 처리방침 ·
+          이용약관 ·
+          사이트맵 ·
+          한국의 변경된 환불 정책 ·
+          회사 세부정보
         </SupportL>
         <SupportR>
-          <A href="javascript:void(0);">
+          
             <FontAwesomeIcon
               icon={faGlobe}
               style={{ color: "#222", marginTop: "0px", marginRight: "10px", fontSize: "15px" }}
             />
-            한국어 (KR)</A>
-          <A href="javascript:void(0);">₩ KRW</A>
-          <A href="javascript:void(0);">지원 및 참고 자료
+            한국어 (KR)
+            ₩ KRW
+          지원 및 참고 자료
             <FontAwesomeIcon
               icon={faAngleUp}
               style={{ color: "#222", marginTop: "0px", marginLeft: "10px", fontSize: "15px" }}
             />
-          </A>
+          
         </SupportR>
       </Support>
       <Address>

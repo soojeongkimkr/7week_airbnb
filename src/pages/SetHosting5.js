@@ -5,18 +5,24 @@ import {Link} from 'react-router-dom'
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
 import startHosting from '../img/starthosting.png'
 
+import {useDispatch, useSelector} from 'react-redux'
+import {getFacilitiesDB} from '../redux/modules/facilities'
 
-const SetHosting5 = (props) => {
-  const [option, setOption] = React.useState('apt');
 
-   // 레이아웃 버튼 선택
-   const isChecked = (e) => {
-    if (e.target.checked){
-      setOption(e.target.value)
-    }
+const SetHosting5 = () => {
+  const dispatch = useDispatch();
+  const [option, setOption] = React.useState([]);
+  React.useEffect(()=>{
+    dispatch(getFacilitiesDB())
+  },[])
+
+  const facilities = useSelector(state => state.facilities.posts)
+  // console.log(facilities&&facilities[0].type)
+
+
+  const fiveStepDone = () => {
+    localStorage.setItem('facilities', JSON.stringify(option))
   }
-  
-
 
   return (
     <SetHostingWrap>
@@ -28,65 +34,69 @@ const SetHosting5 = (props) => {
         </Link>
         <div className="content">
           <div className='detail'>
-            호스팅할 숙소 유형을 알려주세요.
+            숙소 편의시설 정보를 추가해 주세요.
           </div>
         </div>
       </div>
-      <div className='select'>
-        <div className='options'>
-          <div className='option apt'
-          style={option === 'apt' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}>
-            <input type="radio" value="apt" id="apt" name="option"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='apt'>
-              <div>아파트</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/eadbcbdb-d57d-44d9-9a76-665a7a4d1cd7.jpg?im_w=240" alt="아파트"/>
-              </div>
-            </label>
-          </div>
-          <div className='option house'
-          style={option === 'house' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="house" name="option" id="house"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='house'>
-              <div>주택</div>
-              <div className='pic'>
-                <img width="56px" src="https://a0.muscache.com/im/pictures/d1af74db-58eb-46bf-b3f5-e42b6c9892db.jpg?im_w=240" alt="주택"/>
-              </div>
-            </label>
-          </div>
-          <div className='option hotel'
-          style={option === 'hotel' ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
-          > 
-            <input type="radio" value="hotel" name="option" id="hotel"
-            onChange={isChecked}
-            style={{display:'none'}}
-            />
-            <label htmlFor='hotel'>
-              <div>호텔</div>
-              <div className='pic'>
-                <img width="56px" height="56px" src="https://a0.muscache.com/im/pictures/a2c9ad21-b159-4fd2-b417-d810fb23c6a9.jpg?im_w=240" alt="호텔"/>
-              </div>
-            </label>
-          </div>
-        </div>
 
+      <div className='select'>
+        <div className='contents'>
+        {facilities&&facilities.map((v,i) => {
+          return( 
+            <div key={i}>
+              <div className='title'>
+                {v.type}
+              </div>
+              <div className='options' >
+            {v.data.map((l,j)=>{
+              return(
+                  <div className='option' key={j}
+                  style={option.includes(l.id) ? {background:'#f7f7f7', border:'2px solid #222' }: {background:'#fff'}}
+                  > 
+                    <input type="checkbox" value={l.name} name='option' id={l.name}
+                    style={{display:'none'}}
+                    onChange={(e)=>{
+                      if(e.target.checked){
+                        setOption((pre)=>{
+                          const newData = [...pre];
+                          newData.push(l.id)
+                          return newData
+                        })
+                        console.log(e.target.checked)
+                      } else{
+                        console.log(e.target.checked)
+                        setOption((pre)=>{
+                          const newData = pre.filter((v,i)=>{
+                            return l.id !== v
+                          })
+                          return newData
+                        })
+                      }
+                    }}
+                    />
+                    <label htmlFor={l.name}>
+                      <div>{l.name}</div>
+                    </label>
+                  </div>
+                
+              )
+            })}
+             </div>
+          </div>
+          )
+        })}
+        
+        </div>
         <div className='btns'>
-          <Link to={`/host/post/${props.param}/4numbers`}>
+          <Link to={`/host/post/4numbers`}>
             <button className='preBtn'>이전</button>
           </Link>
-          <Link to={`/host/post/${props.param}/6pics`}>
-            <button className='nextBtn'>다음</button>
+          <Link to={`/host/post/6pics`}>
+            <button className='nextBtn' onClick={fiveStepDone}>다음</button>
           </Link>
         </div>
       </div>
-
+      
     </SetHostingWrap>
   )
 }
@@ -106,14 +116,13 @@ const SetHostingWrap = styled.div`
         background-position: center;
 
         .logo{
-          margin: 30px;
+          margin-top: 3vh;
+          margin-left: 2vw;
           cursor: pointer;
         }
         .content{
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
           margin-top: 40vh;
 
           .detail{
@@ -121,20 +130,10 @@ const SetHostingWrap = styled.div`
           font-size: 48px;
           font-weight: 600;
           line-height: 70px;
+          text-align: left;
+          margin-left: 2vw;
+          }
           
-          }
-          button{
-            width: 180px;
-            height: 50px;
-            margin: 40px;
-            color: #fff;
-            font-weight: 700;
-            font-size: 16px;
-            border-radius: 10px;
-            border: 1px solid transparent;
-            background: linear-gradient(to right, rgba(209,50,60), rgba(196,45,101));
-            cursor:pointer;
-          }
         }
       }
 
@@ -146,47 +145,58 @@ const SetHostingWrap = styled.div`
         height: 100%;
         display: flex;
         justify-content: center;
+        align-items:center;
+        flex-direction:column;
+        
+        
+        .contents{
+          overflow-y: scroll;
+          height:80%;
+          padding: 0 30px;
+          /* border-bottom: 1px solid #ccc; */
+        }
+
+        .title{
+          animation: fadein 1s ease-in-out;
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
 
         .options{
-          animation: fadein 1.5s ease-in-out;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        
+          animation: fadein 1s ease-in-out;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          margin-bottom: 70px;
+          margin-top : 10px;
+          margin-left: 2vw;
+          margin-right: 5vw;
+          
+        }
 
-          .option{
+        .option{
             display:flex;
-            width: 15vw;
-            height: 90px;
+            width: auto;
             border: 2px solid #ddd;
-            border-radius: 20px;
+            border-radius: 10px;
             font-size: 18px;
-            padding-left: 30px;
-            padding-right: 30px;
-            margin-bottom: 12px; 
+            margin: 10px;
 
             label{
               display: flex;
-              justify-content: space-between;
+              justify-content: center;
+              align-items: center;
               flex-grow:1;
-            }
-            div{
-              display:flex;
-              justify-content:center;
-              align-items:center;
-            }
-            .pic{
-
-              img{
-                border-radius: 5px;
-              }
+              padding: 1em;
             }
           }
-        }
+
         .btns{
-          
+          width: 100%;
+          border: 1px solid #eee;
+
         }
+
         .preBtn{
           position:absolute;
           bottom: 3vh;
