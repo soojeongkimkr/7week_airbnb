@@ -12,7 +12,7 @@ import IsNotLogin from "./IsNotLogin";
 
 const Header = () => {
   const [mode, setMode] = useState("hotel");
-  const [isLogin, setIsLogin] = useState("true")
+  const [isLogin, setIsLogin] = useState("false")
   
   React.useEffect(()=>{
     
