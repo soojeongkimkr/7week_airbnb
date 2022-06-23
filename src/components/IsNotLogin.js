@@ -44,6 +44,7 @@ const IsNotLogin = () => {
                   color:'#222'
                 }}/>
                 <AccountCircleIcon/>
+                {/* <img src="" alt="" /> */}
               </div>
               {menuVisible && 
               <div className="signinTxt">
