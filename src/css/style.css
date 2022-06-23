@@ -205,6 +205,12 @@
     text-align:center;
 }
 
+.userPic{
+    width:29px;
+    height:29px;
+    border-radius:50%;
+}
+
 @keyframes modal-show {
     from {
         opacity: 0;

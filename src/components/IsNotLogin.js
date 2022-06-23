@@ -10,8 +10,13 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+import { useSelector } from "react-redux";
+import { getUserInfo } from "../redux/modules/user";
+
 const IsNotLogin = () => {
   const navigate = useNavigate();
+  const userInfo = useSelector((state) => state);
+  console.log(userInfo);
   
   const [modalOpen, setModalOpen] = useState(false);
   const [menuVisible, setmenuVisible] = useState(false);
@@ -45,8 +50,9 @@ const IsNotLogin = () => {
                   fontSize:'19px',
                   color:'#222'
                 }}/>
-                <AccountCircleIcon/>
-                {/* <img src="" alt="" /> */}
+                {/* <AccountCircleIcon/> */}
+                {/* <img src="http://k.kakaocdn.net/dn/HXPce/btrDIn3wR2H/pAqciJs2CXKwsnZ3AZeV8K/img_640x640.jpg" className="userPic" /> */}
+                <img src="{}" className="userPic" />
               </div>
               {menuVisible && 
               <div className="signinTxt">

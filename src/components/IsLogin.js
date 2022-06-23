@@ -5,6 +5,8 @@ import { getUserInfoDB } from "../redux/modules/user";
 
 import {Link} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
+import Cookies from "universal-cookie";
+// import { setCookie, getCookie } from '../redux/modules/user';
 
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
@@ -13,6 +15,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const IsLogin = () => {
   const dispatch = useDispatch();
   const [menuVisible, setmenuVisible] = useState(false);
+  // const [cookies, removeCookie] = useCookies(['token']);
+  // const cookies = new Cookies();
 
   React.useEffect(()=>{
     
@@ -24,7 +28,12 @@ const IsLogin = () => {
   // const pic = user_data.picture
   console.log(user_data)
 
-
+  // 로그아웃
+  const removeCookie = () => {
+    const cookies = new Cookies();
+    cookies.remove('token', { path: '/' });
+    alert('로그아웃');
+  }
 
   return (
     <IsLoginWrap>
@@ -72,7 +81,7 @@ const IsLogin = () => {
                   <div> 호스트 추천하기 </div>
                   <div> 계정 </div>
                   <div> 도움말 </div>
-                  <div> 로그아웃 </div>
+                  <div onClick={removeCookie}> 로그아웃 </div>
                 </div>
               </div>
             }

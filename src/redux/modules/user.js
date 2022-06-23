@@ -38,7 +38,7 @@ export const Logout = () => {
 
 // sns 로그인
 export const LoginSns = (token) => {
-    return { type: LOG_IN, token };
+    return { type: LOG_IN_SNS, token };
 };
 
 export const GetUserInfo = (user_data) => {
@@ -229,7 +229,7 @@ export default function reducer(state = initialState, action = {}) {
             state.token = action.token;
             return state;
             
-            case "member/LOG_IN_SNS":
+        case "member/LOG_IN_SNS":
             state.token = action.token;
             console.log(state.token, '로그인 리듀서');
             return state;
