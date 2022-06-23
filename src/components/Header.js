@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import styled, {css, keyframes} from "styled-components";
-import { getUserInfo } from "../redux/modules/user";
+import { getUserInfoDB } from "../redux/modules/user";
 
 import airbnblogo from '../img/airbnblogo.png';
 
 import {Link} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux'
 
 import MenuHotel from './MenuHotel';
 import MenuExp from './MenuExp';
@@ -12,13 +13,19 @@ import IsLogin from "./IsLogin";
 import IsNotLogin from "./IsNotLogin";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [mode, setMode] = useState("hotel");
-  const [isLogin, setIsLogin] = useState("false")
+  
   
   React.useEffect(()=>{
-    getUserInfo();
+    
+    dispatch(getUserInfoDB())
+
   },[])
 
+  const user_data = useSelector(state => state.user)
+  // console.log(user_data)
+  const is_login = user_data ? true:false;
   return (
     <header>
       <HeaderWrap>
@@ -64,12 +71,10 @@ const Header = () => {
             </div>
           </div>
 
-          {isLogin === "true"?
+          {is_login ?
             <IsLogin/>
             :
-            isLogin === "false" ?
             <IsNotLogin/>
-          : null
           } 
           </div>
       </HeaderWrap>
