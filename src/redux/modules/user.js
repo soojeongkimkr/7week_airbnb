@@ -46,7 +46,7 @@ export const signupDB = (email, password) => {
     console.log(email, password);
     //   return async function (dispatch, getState, { history }) {
     return async function (dispatch, getState) {
-        await axios;
+        await
         instance
             .post("/member/guest", {
                 email: email,
@@ -66,12 +66,14 @@ export const signupDB = (email, password) => {
                 window.alert('회원 가입 에러');
             });
     };
+
+
 };
 
 // 로그인
 // export const loginFB = (email, password) => {
 //     return async function (dispatch, getState) {
-//         await axios;
+//         await
 //         instance
 //             .post("/member/login", {
 //                 email: email,
@@ -182,9 +184,24 @@ export const getCookie = (name) => {
 // };
 
 // 토큰 해독
-// export const loginCheckFB = () => {
-// return function (dispatch, getState, { history }) {
-// };
+export const loginCheckFB = () => {
+    return async function (dispatch, getState, { history }) {
+        await
+        instance
+            .post("/member")
+            .then(function (response) {
+                // 통신 성공 시 response 반환
+                console.log(response)
+                // history.push("/user/login");
+            })
+            .catch(function (error) {
+                console.log(error)
+                // db 서버 에러 메세지 반환
+                // const err_message = error.response.data.errorMessage;
+                // window.alert(err_message);
+            });
+};
+}
 
 // Reducer
 export default function reducer(state = initialState, action = {}) {
@@ -198,12 +215,12 @@ export default function reducer(state = initialState, action = {}) {
             console.log(state.token, '로그인 리듀서');
             return state;
 
-        // case "member/LOGIN_CHECK":
-        //     state.userId = action.userId;
-        //     state.nickname = action.nickname;
-        //     console.log(state.userId);
-        //     console.log(state);
-        //     return state;
+        case "member/LOGIN_CHECK":
+            state.userId = action.userId;
+            state.nickname = action.nickname;
+            console.log(state.userId);
+            console.log(state);
+            return state;
 
         // case "member/LOG_OUT":
         //     state.is_login = false;

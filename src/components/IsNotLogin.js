@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import Login from "../components/Login";
 
 import styled, {css} from "styled-components";
 import { useNavigate } from 'react-router-dom';
+
+import {Link} from 'react-router-dom'
 
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
@@ -26,9 +28,9 @@ const IsNotLogin = () => {
     <nav className="header_right_wrap">
           <div className="header_right">
             <div className="header_right_host">
-              <div className="host" onClick={() => {
-                navigate('../StartHosting');
-              }}>호스트 되기</div>
+              <div className="host" onClick={openModal}>호스트 되기</div>
+              <Login open={modalOpen} close={closeModal} header="로그인 또는 회원 가입">
+                  </Login>
               <div className="language">
                 <LanguageOutlinedIcon/>
               </div>
@@ -103,6 +105,7 @@ const IsNotLoginWrap = styled.div`
         padding: 11px 20px;
         border-radius: 100px;
         color: #222;
+        cursor:pointer;
       }
       /* .headerWrap .header_right_wrap .header_right .header_right_host .host a.up {
           font-size: 14px;
@@ -121,7 +124,7 @@ const IsNotLoginWrap = styled.div`
           width: 32px;
           height: 32px;
           border-radius:100px;
-          /* background:red; */
+          cursor: pointer;
       }
 
 
@@ -183,6 +186,7 @@ const IsNotLoginWrap = styled.div`
       .header_right_wrap .header_right .signinTxt>div{
           margin-left:20px;
           margin-top:30px;
+          cursor:pointer;
           
       }
       .header_right_wrap .header_right .signinTxt div{
@@ -209,6 +213,7 @@ const IsNotLoginWrap = styled.div`
       .header_right_wrap .header_right .signinTxt div{
           font-size: 14px;
           color:#222;
+          
       }
 
 
