@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import styled, {css, keyframes} from "styled-components";
+import { getUserInfo } from "../redux/modules/user";
 
 import airbnblogo from '../img/airbnblogo.png';
 
@@ -15,7 +16,7 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState("false")
   
   React.useEffect(()=>{
-    
+    getUserInfo();
   },[])
 
   return (

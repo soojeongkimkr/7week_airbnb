@@ -2,6 +2,7 @@ import React, {useState, useRef} from "react";
 import Login from "../components/Login";
 
 import styled, {css} from "styled-components";
+import { useNavigate } from 'react-router-dom';
 
 import {Link} from 'react-router-dom'
 
@@ -10,6 +11,8 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const IsNotLogin = () => {
+  const navigate = useNavigate();
+  
   const [modalOpen, setModalOpen] = useState(false);
   const [menuVisible, setmenuVisible] = useState(false);
   
@@ -43,6 +46,7 @@ const IsNotLogin = () => {
                   color:'#222'
                 }}/>
                 <AccountCircleIcon/>
+                {/* <img src="" alt="" /> */}
               </div>
               {menuVisible && 
               <div className="signinTxt">
