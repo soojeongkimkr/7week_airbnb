@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import instance from "./../../shared/api"
 const GET = "facilities/GET"
 
 export function getFacilities(facilities){
@@ -17,7 +17,7 @@ const initialState = {
 
 export const getFacilitiesDB = () => async (dispatch) => {
   try {
-    const data = await axios.get("http://idontcare.shop/facilities");
+    const data = await instance.get("facilities");
     dispatch(getFacilities(data.data));
     console.log(data.data);
   } catch (error) {

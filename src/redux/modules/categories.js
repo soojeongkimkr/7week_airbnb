@@ -1,4 +1,5 @@
 import axios from "axios";
+import instance from "./../../shared/api"
 
 const GET = "categories/GET"
 const GETLIST = "categories/GETLIST"
@@ -21,7 +22,7 @@ const initialState = {
 
 export const getCategoriesDB = () => async (dispatch) => {
   try {
-    const data = await axios.get("http://idontcare.shop/categories");
+    const data = await instance.get("categories");
     dispatch(getCategories(data.data));
     console.log(data.data);
   } catch (error) {
@@ -32,7 +33,7 @@ export const getCategoriesDB = () => async (dispatch) => {
 
 export const getCategoryDB = () => async (dispatch) => {
   try {
-    const data = await axios.get("http://idontcare.shop/hotels",{
+    const data = await instance.get("hotels",{
       params:{
         category: 1
       }
