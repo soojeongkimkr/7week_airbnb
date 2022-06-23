@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Cookies } from "react-cookie"
+// import { setCookie, getCookie } from '../redux/modules/user';
 import { createAction } from "redux-actions";
 // 전역 관리(db 서버와 연결)를 위한 instance import
 import instance from "../../shared/api";
@@ -25,8 +26,8 @@ export const Login = (token) => {
 };
 
 // 로그인 체크
-export const Logincheck = (userId) => {
-    return { type: LOGIN_CHECK, userId };
+export const Logincheck = (name) => {
+    return { type: LOGIN_CHECK, name };
 };
 
 // 로그아웃
@@ -113,11 +114,60 @@ export const signupDB = (email, password) => {
 //     };
 // };
 
+// export const loginDBSns = (name, picture) => {
+//     return async function (dispatch, getState) {
+//         // return cookies.set(name, value, {path: "/"}) {
+//         // await axios;
+//         await
+//         instance
+//             .get("/member", {
+//                 // headers: { Authorization: ` ${localStorage.getItem("token")}` },
+//                 // headers: { Authorization: `Bearer ${getCookie(['token']);}` },
+//                 // headers: { Authorization: ` ${getCookie(['token']);}` },
+//                 headers: { Authorization: `Bearer getCookie(['token']);` },
+//             })
+//             .then(function (response) {
+//                 console.log(response);
+//                 // const name = response.body; //맞는지 체크
+//                 const name = response.data;
+//                 console.log(name);
+//                 // 로컬 스토리지에 유저네임 저장
+//                 // localStorage.setItem("name", name);
+//                 // 쿠키에 저장
+//                 // cookies.set(name, value, { path: "/" });
+//                 console.log("유저명 받아오기 완료 ", response);
+//                 window.alert(name + "님 접속을 환영 합니다.");
+//                 dispatch(Logincheck(name));
+//             })
+//             .catch(function (error) {
+//                 console.log("유저명 받아오기 실패", error);
+//             });
+//     };
+// };
+
+export const getUserInfo = async () => {
+    // await instance.get(url '/member')
+    // await instance.get(url: '/member')
+    await instance.get('/member')
+        // .then((response: AxiosResponse<any>) => {
+        //     return response.data
+        // }).catch((error) => {
+        //     console.log(error);
+        // })
+        .then(function(response) {
+            return response.data
+            console.log(response);
+        }).catch((error) => {
+            console.log('오류');
+            console.log(error);
+        })
+}
+
 export const setCookie = (name, value, option) => {
     const cookies = new Cookies();
-    console.log('쿠키값 받아오기');
+    // console.log('쿠키값 받아오기');
     // return cookies.set(name, value, { ...option });
-    return cookies.set(name, value, {path: "/"});
+    return cookies.set(name, value, { path: "/" });
     // navigate('/');
 }
 
@@ -142,9 +192,9 @@ export const getCookie = (name) => {
 // Reducer
 export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
-        // case "member/LOG_IN":
-        //     state.token = action.token;
-        //     return state;
+        case "member/LOG_IN":
+            state.token = action.token;
+            return state;
 
         case "member/LOG_IN_SNS":
             state.token = action.token;

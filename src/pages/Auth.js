@@ -7,6 +7,8 @@ import { useLocation } from "react-router-dom";
 // import { useCookies } from 'react-cookie';
 import Cookies from "universal-cookie";
 import { setCookie, getCookie } from '../redux/modules/user';
+// import { loginDBSns } from "../redux/modules/user";
+// import { getUserInfo } from "../redux/modules/user";
 
 const Auto = (props) => {
   // 회원관련
@@ -50,6 +52,8 @@ const Auto = (props) => {
   // getCookie(['token']);
 
   useEffect(() => {
+    // loginDBSns();
+    // getUserInfo();
     navigate('/');
   }, []);
 

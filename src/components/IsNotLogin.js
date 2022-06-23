@@ -2,12 +2,15 @@ import React, {useState} from "react";
 import Login from "../components/Login";
 
 import styled, {css} from "styled-components";
+import { useNavigate } from 'react-router-dom';
 
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const IsNotLogin = () => {
+  const navigate = useNavigate();
+  
   const [modalOpen, setModalOpen] = useState(false);
   const [menuVisible, setmenuVisible] = useState(false);
   
@@ -23,7 +26,9 @@ const IsNotLogin = () => {
     <nav className="header_right_wrap">
           <div className="header_right">
             <div className="header_right_host">
-              <div className="host">호스트 되기</div>
+              <div className="host" onClick={() => {
+                navigate('../StartHosting');
+              }}>호스트 되기</div>
               <div className="language">
                 <LanguageOutlinedIcon/>
               </div>
