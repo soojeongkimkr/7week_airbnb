@@ -272,7 +272,7 @@ const dispatch = useDispatch();
             id="file-input"
             name="file"
             accept="image/*"
-            onChange={()=>{saveImage1(); uploadFB1()}}
+            onChange={uploadFB1}
             style={{ display: "none" }}
             multiple="multiple"
           ></input>
@@ -329,7 +329,7 @@ const dispatch = useDispatch();
           id="file-input"
           name="file"
           accept="image/*"
-          onChange={()=>{saveImage2(); uploadFB2()}}
+          onChange={uploadFB2}
           style={{ display: "none" }}
           multiple="multiple"
         ></input>
@@ -385,7 +385,7 @@ const dispatch = useDispatch();
           id="file-input"
           name="file"
           accept="image/*"
-          onChange={()=>{saveImage3(); uploadFB3()}}
+          onChange={uploadFB3}
           style={{ display: "none" }}
           multiple="multiple"
         ></input>
@@ -443,7 +443,7 @@ const dispatch = useDispatch();
           id="file-input"
           name="file"
           accept="image/*"
-          onChange={()=>{saveImage4(); uploadFB4()}}
+          onChange={uploadFB4}
           style={{ display: "none" }}
           multiple="multiple"
         ></input>
@@ -500,7 +500,7 @@ const dispatch = useDispatch();
             id="file-input"
             name="file"
             accept="image/*"
-            onChange={()=>{saveImage5(); uploadFB5()}}
+            onChange={uploadFB5}
             style={{ display: "none" }}
             multiple="multiple"
           ></input>

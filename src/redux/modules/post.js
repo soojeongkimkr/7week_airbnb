@@ -115,7 +115,7 @@ export const addPostFB = (post_list) => {
     const user_data = await addDoc(collection(db, 'img'), post_list);
     // const post_data = { id: user_data.id, date: Date.now(), ...post_list}
 
-    dispatch(addPost(user_data))
+    dispatch(addPostF(user_data))
     // console.log(user_data)
   }
 }
