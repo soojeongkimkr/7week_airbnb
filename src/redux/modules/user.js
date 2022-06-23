@@ -230,9 +230,9 @@ export default function reducer(state = initialState, action = {}) {
             return state;
             
         case "member/LOG_IN_SNS":
-        state.token = action.token;
-        console.log(state.token, '로그인 리듀서');
-        return state;
+            state.token = action.token;
+            console.log(state.token, '로그인 리듀서');
+            return state;
 
         case "member/LOGIN_CHECK":
             state.userId = action.userId;
