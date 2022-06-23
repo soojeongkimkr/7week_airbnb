@@ -12,6 +12,7 @@ const LOG_IN = "member/LOG_IN";
 const LOGIN_CHECK = "member/LOGIN_CHECK";
 const LOG_OUT = "member/LOG_OUT";
 const LOG_IN_SNS = "member/LOG_IN_SNS";
+const USER_INFO = "member/USER_INFO"
 
 // 초기값
 const initialState = {
@@ -39,6 +40,10 @@ export const Logout = () => {
 export const LoginSns = (token) => {
     return { type: LOG_IN_SNS, token };
 };
+
+export const GetUserInfo = (user_data) => {
+    return { type: USER_INFO, user_data}
+}
 
 // middlewares
 // 회원가입
@@ -147,20 +152,34 @@ export const signupDB = (email, password) => {
 //     };
 // };
 
-export const getUserInfo = async () => {
-    await instance.get('/member')
-        .then(function(response) {
-            console.log(response);
-            const userName = response.data.name
-            const userPic = response.data.picture
-            console.log(userName);
-            console.log(userPic);
-            return response.data
-        }).catch((error) => {
-            // console.log('오류');
-            console.log(error);
-        })
-}
+// export const getUserInfoDB = () => {
+//     return async function (dispatch, getState){
+//     await instance.get('/member')
+//         .then(function(response) {
+//             // console.log(response);
+//             const userName = response.data.name
+//             const userPic = response.data.picture
+//             console.log(userName);
+//             console.log(userPic);
+//             dispatch(GetUserInfo(response.data))
+//             // return response.data
+//         }).catch((error) => {
+//             // console.log('오류');
+//             console.log(error);
+//         })
+//     }
+// }
+export const getUserInfoDB = () => async (dispatch) => {
+    try {
+      const data = await instance.get('/member');
+      console.log(data.data)
+      dispatch(GetUserInfo(data.data));
+    //   localStorage.setItem('user', JSON.stringify(data.data.name))
+    } catch (error) {
+      alert("오류가 발생했습니다. 다시 시도해주세요.");
+      console.log(error);
+    }
+  };
 
 export const setCookie = (name, value, option) => {
     const cookies = new Cookies();
@@ -184,24 +203,24 @@ export const getCookie = (name) => {
 // };
 
 // 토큰 해독
-// export const loginCheckFB = () => {
-//     return async function (dispatch, getState, { history }) {
-//         await
-//         instance
-//             .post("/member")
-//             .then(function (response) {
-//                 // 통신 성공 시 response 반환
-//                 console.log(response)
-//                 // history.push("/user/login");
-//             })
-//             .catch(function (error) {
-//                 console.log(error)
-//                 // db 서버 에러 메세지 반환
-//                 // const err_message = error.response.data.errorMessage;
-//                 // window.alert(err_message);
-//             });
-// };
-// }
+export const loginCheckFB = () => {
+    return async function (dispatch, getState, { history }) {
+        await
+        instance
+            .post("/member")
+            .then(function (response) {
+                // 통신 성공 시 response 반환
+                console.log(response)
+                // history.push("/user/login");
+            })
+            .catch(function (error) {
+                console.log(error)
+                // db 서버 에러 메세지 반환
+                // const err_message = error.response.data.errorMessage;
+                // window.alert(err_message);
+            });
+    };
+}
 
 // Reducer
 export default function reducer(state = initialState, action = {}) {
@@ -215,12 +234,22 @@ export default function reducer(state = initialState, action = {}) {
         console.log(state.token, '로그인 리듀서');
         return state;
 
-        // case "member/LOGIN_CHECK":
-        //     state.userId = action.userId;
-        //     state.nickname = action.nickname;
-        //     console.log(state.userId);
-        //     console.log(state);
+        case "member/LOGIN_CHECK":
+            state.userId = action.userId;
+            state.nickname = action.nickname;
+            // console.log(state.userId);
+            // console.log(state);
+            return state;
+
+        // case "member/USER_INFO":
+        //     state.userName = action.userName
         //     return state;
+
+        case "member/USER_INFO":{
+            console.log(state)
+            return {user: action.user_data}
+        }
+
 
         // case "member/LOG_OUT":
         //     state.is_login = false;

@@ -1,15 +1,29 @@
 import React, {useState} from "react";
 
 import styled, {css} from "styled-components";
+import { getUserInfoDB } from "../redux/modules/user";
 
 import {Link} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
 
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const IsLogin = () => {
+  const dispatch = useDispatch();
   const [menuVisible, setmenuVisible] = useState(false);
+
+  React.useEffect(()=>{
+    
+    dispatch(getUserInfoDB())
+
+  },[])
+
+  const user_data = useSelector(state => state.user.user)
+  // const pic = user_data.picture
+  console.log(user_data)
+
 
 
   return (
@@ -28,7 +42,15 @@ const IsLogin = () => {
               onClick={()=>{setmenuVisible(!menuVisible)}}
               className="signin_item">
                 <MenuOutlinedIcon/>
-                <AccountCircleIcon/>
+                <div className="usePic"
+                style={{width:'29px', height:'29px', borderRadius:'50%',
+                
+                }}>
+                  <img src={user_data&&user_data.picture} alt="프로필"
+                  style={{width:'29px', height:'29px', borderRadius:'50%',
+                }}/>
+                </div>
+                {/* <AccountCircleIcon/> */}                
               </div>
               {menuVisible && 
               <div className="signinTxt">
@@ -73,6 +95,9 @@ const IsLoginWrap = styled.div`
       /* .header_right_wrap {
         
       } */
+      .usePic{
+       
+      }
 
       .header_right_wrap .header_right {
         position: absolute;
