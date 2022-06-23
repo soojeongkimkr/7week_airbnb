@@ -50,10 +50,10 @@ const Main = () => {
   //   remove('token', {path: "/"})
   // }
 
-  // const removeCookie = () => {
-  //   const cookies = new Cookies();
-  //   cookies.remove('token', { path: '/' });
-  // }
+  const removeCookie = () => {
+    const cookies = new Cookies();
+    cookies.remove('token', { path: '/' });
+  }
 
   return (
     <>
