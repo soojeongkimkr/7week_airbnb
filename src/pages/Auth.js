@@ -48,10 +48,11 @@ const Auto = (props) => {
 
   // console.log(document.cookie);
 
-  setCookie('token', urlParams)
+  // setCookie('token', urlParams)
   // getCookie(['token']);
 
   useEffect(() => {
+    setCookie('token', urlParams)
     // loginDBSns();
     // getUserInfo();
     navigate('/');

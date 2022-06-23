@@ -146,19 +146,16 @@ export const signupDB = (email, password) => {
 // };
 
 export const getUserInfo = async () => {
-    // await instance.get(url '/member')
-    // await instance.get(url: '/member')
     await instance.get('/member')
-        // .then((response: AxiosResponse<any>) => {
-        //     return response.data
-        // }).catch((error) => {
-        //     console.log(error);
-        // })
         .then(function(response) {
-            return response.data
             console.log(response);
+            const userName = response.data.name
+            const userPic = response.data.picture
+            console.log(userName);
+            console.log(userPic);
+            return response.data
         }).catch((error) => {
-            console.log('오류');
+            // console.log('오류');
             console.log(error);
         })
 }
@@ -195,9 +192,10 @@ export default function reducer(state = initialState, action = {}) {
         case "member/LOG_IN":
             state.token = action.token;
             return state;
-
-        case "member/LOG_IN_SNS":
+            
+            case "member/LOG_IN_SNS":
             state.token = action.token;
+            console.log(state.token, '로그인 리듀서');
             return state;
 
         // case "member/LOGIN_CHECK":
