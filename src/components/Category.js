@@ -77,7 +77,7 @@ const Category = () => {
       <div className="cardWrap">
         {category&&category.map((v,i)=>{
           return(
-            <div className="content">
+            <div className="content" key={i}>
             <div className="card" style={{backgroundImage:`url(${v.mainImage})`, backgroundPosition:'center'}}>
             </div>
             <div className="txt">
@@ -86,7 +86,6 @@ const Category = () => {
                   {v.title}
                 </div>
                 <div className="new">
-                  NEW
                 </div>
                 </div>
                 <div className="priceWrap">
@@ -155,7 +154,6 @@ const Wrap = styled.div`
    margin-right:10px;
  }
  .card{
-   background:blue;
    height: 200px;
    border-radius: 20px;
    margin: 0 auto;

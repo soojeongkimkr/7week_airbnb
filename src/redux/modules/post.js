@@ -70,7 +70,7 @@ export function deletePost(postID){
 export const getPostDB = (id) => async (dispatch) => {
   console.log(id)
   try {
-    const data = await axios.get(`http://idontcare.shop/hotel/${id}`);
+    const data = await instance.get(`hotel/${id}`);
     dispatch(getPost(data.data));
     console.log(data.data);
   } catch (error) {
@@ -79,10 +79,12 @@ export const getPostDB = (id) => async (dispatch) => {
   }
 };
 
+
+
 export const getPostListDB = (id) => async (dispatch) => {
   console.log(id)
   try {
-    const data = await axios.get(`http://idontcare.shop/hotel?category=${id}`);
+    const data = await instance.post(`hotels`);
     dispatch(getPost(data.data));
     console.log(data.data);
   } catch (error) {
@@ -122,12 +124,12 @@ export const addPostFB = (post_list) => {
 
 export const addPostDB = (data) => {
   console.log(data)
+  console.log(data.images)
   return async function (dispatch, getState) {
     await instance
       .post("hotel", data, {
         headers: {
-          "Content-Type": "multipart/form-data",
-          authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data"
         },
       })
       .then((res) => {
@@ -191,12 +193,9 @@ export const addPostDB = (data) => {
 export const deletePostDB = (Id) => {
   
   return function (dispatch) {
-     axios
-      .delete(`http://idontcare.shop/hotel/${Id}`,
+    instance
+      .delete(`hotel/${Id}`,
       {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
       }
       )
       .then((res) => {
