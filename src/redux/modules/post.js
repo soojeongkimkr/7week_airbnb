@@ -1,9 +1,23 @@
-
+import instance from "./../../shared/api"
 import axios from "axios";
+
+import {db} from "../../shared/firebase";
+
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+} from 'firebase/firestore'
 
 const GET = "post/GET"
 const GETLIST = "post/GETLIST"
+const LOADF = "post/LOADF"
 const ADD = "post/ADD"
+const ADDF = 'post/ADDF'
 const MODIFY = "post/MODIFY"
 const DELETE = "post/DELETE"
 
@@ -29,6 +43,15 @@ export function getPost(post){
 export function getPostList(post_list){
   return {type: GETLIST, post_list}
 }
+
+export function loadPostF(post_list){
+  return {type:LOADF, post_list}
+}
+
+export function addPostF(post_list){
+  return {type:ADDF, post_list}
+}
+
 export function addPost(post){
   return {type: ADD, post}
 }
@@ -68,11 +91,40 @@ export const getPostListDB = (id) => async (dispatch) => {
   }
 };
 
+
+
+export const loadPostFB = () => {
+  return async function (dispatch){
+    const post_data = await getDocs(collection(db, "img"));
+    let post_list = [];
+    post_data.forEach((v)=> {
+      post_list.push({...v.data()})
+    })
+    console.log(post_list)
+
+    dispatch(loadPostF(post_list));
+  }
+  
+};
+
+
+
+
+export const addPostFB = (post_list) => {
+  return async function (dispatch){
+    const user_data = await addDoc(collection(db, 'img'), post_list);
+    // const post_data = { id: user_data.id, date: Date.now(), ...post_list}
+
+    dispatch(addPost(user_data))
+    // console.log(user_data)
+  }
+}
+
 export const addPostDB = (data) => {
   console.log(data)
   return async function (dispatch, getState) {
-    await axios
-      .post("http://idontcare.shop/hotel", data, {
+    await instance
+      .post("hotel", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -163,6 +215,15 @@ export const deletePostDB = (Id) => {
 
 export default function reducer(state = initialState, action={}){
   switch(action.type){
+
+
+    case "post/LOADF":{
+      return {posts: action.post_list}
+    }
+    case "post/ADDF":{
+      const new_post_list = [ action.post_list, ...state.posts];
+      return {posts: new_post_list}
+    }
 
     case "post/GET":{
       return {posts: action.post}

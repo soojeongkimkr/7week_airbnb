@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, {css} from "styled-components";
 import {Link} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
-import {addPostDB} from '../redux/modules/post'
+import {useDispatch, useSelector} from 'react-redux'
+import {addPostDB, loadPostFB} from '../redux/modules/post'
 
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
 import startHosting from '../img/starthosting.png'
@@ -22,6 +22,14 @@ const SetHosting10 = () => {
  const description = JSON.parse(localStorage.getItem('description'));
  const address = JSON.parse(localStorage.getItem('address'));
  const mainImg = JSON.parse(localStorage.getItem('main'));
+
+
+ React.useEffect(()=> {
+  dispatch(loadPostFB());
+}, [])
+
+const imgData = useSelector(state => state.post.posts)
+console.log(imgData)
 
 
  const onPostHandler = () => {

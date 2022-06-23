@@ -1,9 +1,17 @@
 import React, {useRef, useState} from 'react';
 import styled, {css} from "styled-components";
 import {Link} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import airbnblogo_ws from '../img/airbnblogo_ws.png'
+
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { storage } from '../shared/firebase'
+
+import {addPostFB} from '../redux/modules/post'
+
+
 
 
 const SetHosting6 = () => {
@@ -94,25 +102,119 @@ const SetHosting6 = () => {
   };
 
 
+  // 이미지파일 파이어스토리지에 업로드하기
+  const uploadFB1 = async(e) => {
+    const uploaded_file = await uploadBytes(
+      ref(storage, `images/${e.target.files[0].name}`),
+      e.target.files[0]
+    )
+    // console.log(uploaded_file)
+    
+    // 이미지파일 url로 가져오기    
+    const file_url = await getDownloadURL(uploaded_file.ref)
+    // console.log(fileUrl)
+    fileInput1.current = {url:file_url}
+    // console.log(inputFile_ref.current)
+    setAttachment1(fileInput1.current.url)
+  }
+  console.log(attachment1)
+  console.log(attachment2)
+  console.log(attachment3)
+  console.log(attachment4)
+  console.log(attachment5)
+
+  const uploadFB2 = async(e) => {
+    const uploaded_file = await uploadBytes(
+      ref(storage, `images/${e.target.files[0].name}`),
+      e.target.files[0]
+    )
+    // console.log(uploaded_file)
+    
+    // 이미지파일 url로 가져오기    
+    const file_url = await getDownloadURL(uploaded_file.ref)
+    // console.log(fileUrl)
+    fileInput2.current = {url:file_url}
+    // console.log(inputFile_ref.current)
+    setAttachment2(fileInput2.current.url)
+  }
+
+  const uploadFB3 = async(e) => {
+    const uploaded_file = await uploadBytes(
+      ref(storage, `images/${e.target.files[0].name}`),
+      e.target.files[0]
+    )
+    // console.log(uploaded_file)
+    
+    // 이미지파일 url로 가져오기    
+    const file_url = await getDownloadURL(uploaded_file.ref)
+    // console.log(fileUrl)
+    fileInput3.current = {url:file_url}
+    // console.log(inputFile_ref.current)
+    setAttachment3(fileInput3.current.url)
+  }
+
+  const uploadFB4 = async(e) => {
+    const uploaded_file = await uploadBytes(
+      ref(storage, `images/${e.target.files[0].name}`),
+      e.target.files[0]
+    )
+    // console.log(uploaded_file)
+    
+    // 이미지파일 url로 가져오기    
+    const file_url = await getDownloadURL(uploaded_file.ref)
+    // console.log(fileUrl)
+    fileInput4.current = {url:file_url}
+    // console.log(inputFile_ref.current)
+    setAttachment4(fileInput4.current.url)
+  }
+
+  const uploadFB5 = async(e) => {
+    const uploaded_file = await uploadBytes(
+      ref(storage, `images/${e.target.files[0].name}`),
+      e.target.files[0]
+    )
+    // console.log(uploaded_file)
+    
+    // 이미지파일 url로 가져오기    
+    const file_url = await getDownloadURL(uploaded_file.ref)
+    // console.log(fileUrl)
+    fileInput5.current = {url:file_url}
+    // console.log(inputFile_ref.current)
+    setAttachment5(fileInput5.current.url)
+  }
+
+const dispatch = useDispatch();
+
+
   // 이미지 모두 담아서 전송
   const sixStepDone = () => {
+    dispatch(addPostFB({
+      mainImage : attachment1,
+      images : [attachment2, attachment3,
+      attachment4,
+      attachment5]
+      
+    }))
 
     // 메인 이미지
-    const _file = fileInput1.current.files[0];
-    const _file2 = fileInput2.current.files[0];
-    const _file3 = fileInput3.current.files[0];
-    const _file4 = fileInput4.current.files[0];
-    const _file5 = fileInput5.current.files[0];
-    console.log(_file);
+    // const _file = fileInput1.current.files[0];
+    // const _file2 = fileInput2.current.files[0];
+    // const _file3 = fileInput3.current.files[0];
+    // const _file4 = fileInput4.current.files[0];
+    // const _file5 = fileInput5.current.files[0];
+    // console.log(_file);
 
-    const formData = new FormData();
-    const _formData = new FormData();
+    // const formData = new FormData();
+    // const _formData = new FormData();
 
-    formData.append("mainImage", _file);
-    _formData.append("images", {_file2, _file3, _file4, _file5});
+    // formData.append("mainImage", _file);
+    // _formData.append("images", _file2);
+    // _formData.append("images", _file3);
+    // _formData.append("images", _file4);
+    // _formData.append("images", _file5);
 
-    localStorage.setItem('mainImage', JSON.stringify(formData))
-    localStorage.setItem('images', JSON.stringify(_formData))
+    localStorage.setItem('mainImage', JSON.stringify(attachment1))
+    localStorage.setItem('images', JSON.stringify(attachment2, attachment3, attachment4, attachment5))
     localStorage.setItem('main',JSON.stringify(attachment1))
 
 };
@@ -170,7 +272,7 @@ const SetHosting6 = () => {
             id="file-input"
             name="file"
             accept="image/*"
-            onChange={saveImage1}
+            onChange={()=>{saveImage1(); uploadFB1()}}
             style={{ display: "none" }}
             multiple="multiple"
           ></input>
@@ -227,7 +329,7 @@ const SetHosting6 = () => {
           id="file-input"
           name="file"
           accept="image/*"
-          onChange={saveImage2}
+          onChange={()=>{saveImage2(); uploadFB2()}}
           style={{ display: "none" }}
           multiple="multiple"
         ></input>
@@ -283,7 +385,7 @@ const SetHosting6 = () => {
           id="file-input"
           name="file"
           accept="image/*"
-          onChange={saveImage3}
+          onChange={()=>{saveImage3(); uploadFB3()}}
           style={{ display: "none" }}
           multiple="multiple"
         ></input>
@@ -341,7 +443,7 @@ const SetHosting6 = () => {
           id="file-input"
           name="file"
           accept="image/*"
-          onChange={saveImage4}
+          onChange={()=>{saveImage4(); uploadFB4()}}
           style={{ display: "none" }}
           multiple="multiple"
         ></input>
@@ -398,7 +500,7 @@ const SetHosting6 = () => {
             id="file-input"
             name="file"
             accept="image/*"
-            onChange={saveImage5}
+            onChange={()=>{saveImage5(); uploadFB5()}}
             style={{ display: "none" }}
             multiple="multiple"
           ></input>

@@ -23,9 +23,12 @@ const Header = () => {
 
   },[])
 
-  const user_data = useSelector(state => state.user)
+  const user_data = useSelector(state => state.user.user)
   // console.log(user_data)
-  const is_login = user_data ? true:false;
+  // console.log(user_data)
+  const is_login = user_data&&user_data.name !== undefined ? true : false
+  // console.log(user_data.name)
+
   return (
     <header>
       <HeaderWrap>
